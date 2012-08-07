@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8"/>
+    <title>Giulia Sabadelli - Admin</title>
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" media="all" href="/giulia/css/style.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
+
+    <script type="text/javascript" src="/giulia/js/underscore-min.js"></script>
+    <script type="text/javascript" src="/giulia/js/zepto.js"></script>
+    <script type="text/javascript" src="/giulia/js/backbone.js"></script>
+    <script type="text/javascript" src="/giulia/js/admin.js"></script>
+  </head>
+  
+  <body lang="en">
+    <form action="http://api-beta.sabadelli.it/giulia/postcard" method="POST">
+      <fieldset>
+        <legend>Front</legend>
+        Title:
+        <input name="title" type="text" /><br />
+        Media:
+        <input type="file" name="photo" />
+        <button type="button" id="mediaUploadButton">Upload</button>
+      </fieldset>
+      <fieldset>
+        <legend>Back</legend>
+        From country:
+        <select name="from_country">
+          <option value="it">Italy</option>
+          <option value="no" selected>Norway</option>
+          <option value="za">South Africa</option>
+        </select><br />
+        To country:
+        <select name="to_country">
+          <option value="it">Italy</option>
+          <option value="no">Norway</option>
+          <option value="za">South Africa</option>
+        </select><br />
+        Recipients:
+        <textarea name="recipients" placeholder="Insert the text for the recipients box"></textarea>
+      </fieldset>
+      <fieldset>
+        <legend>Message</legend>
+        <textarea name="content_raw" placeholder="Insert the message"></textarea><br />
+        Message written in:
+        <select name="lang">
+          <option value="af">Afrikaans</option>
+          <option value="it">Italian</option>
+          <option value="en" selected>English</option>
+          <option value="no">Norwegian</option>
+        </select>
+      </fieldset>
+      <input type="hidden" name="media" />
+      <input type="reset" />
+      <input type="submit" value="Save" />
+      <button type="button" id="postcardSendButton">Post</button>
+    </form>
+  </body>
+  
+</html>

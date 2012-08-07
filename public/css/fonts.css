@@ -1,0 +1,91 @@
+@font-face {
+    font-family: 'NoteThis';
+    src: url('/giulia/css/fonts/Note_this-webfont.eot');
+    src: url('/giulia/css/fonts/Note_this-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/giulia/css/fonts/Note_this-webfont.woff') format('woff'),
+         url('/giulia/css/fonts/Note_this-webfont.ttf') format('truetype'),
+         url('/giulia/css/fonts/Note_this-webfont.svg#NotethisRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JrHand';
+    src: url('/giulia/css/fonts/JrHand-webfont.eot');
+    src: url('/giulia/css/fonts/JrHand-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/giulia/css/fonts/JrHand-webfont.woff') format('woff'),
+         url('/giulia/css/fonts/JrHand-webfont.ttf') format('truetype'),
+         url('/giulia/css/fonts/JrHand-webfont.svg#jrhandRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JournalRegular';
+    src: url('/giulia/css/fonts/journal-webfont.eot');
+    src: url('/giulia/css/fonts/journal-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/giulia/css/fonts/journal-webfont.woff') format('woff'),
+         url('/giulia/css/fonts/journal-webfont.ttf') format('truetype'),
+         url('/giulia/css/fonts/journal-webfont.svg#JournalRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JennaSueRegular';
+    src: url('/giulia/css/fonts/JennaSue-webfont.eot');
+    src: url('/giulia/css/fonts/JennaSue-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/giulia/css/fonts/JennaSue-webfont.woff') format('woff'),
+         url('/giulia/css/fonts/JennaSue-webfont.ttf') format('truetype'),
+         url('/giulia/css/fonts/JennaSue-webfont.svg#JennaSueRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'UnderwoodChampionRegular';
+    src: url('/giulia/css/fonts/underwood_champion-webfont.eot');
+    src: url('/giulia/css/fonts/underwood_champion-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/giulia/css/fonts/underwood_champion-webfont.woff') format('woff'),
+         url('/giulia/css/fonts/underwood_champion-webfont.ttf') format('truetype'),
+         url('/giulia/css/fonts/underwood_champion-webfont.svg#UnderwoodChampionRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ElliotSixRegular';
+    src: url('/giulia/css/fonts/ElliotSix-webfont.eot');
+    src: url('/giulia/css/fonts/ElliotSix-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/giulia/css/fonts/ElliotSix-webfont.woff') format('woff'),
+         url('/giulia/css/fonts/ElliotSix-webfont.ttf') format('truetype'),
+         url('/giulia/css/fonts/ElliotSix-webfont.svg#ElliotSixRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/*
+@font-face {
+  font-family: 'Bebas';
+  src: url('/edoardo/wedding/css/fonts/Bebas.eot');
+  src: local('Bebas'),
+       url('/edoardo/wedding/css/fonts/Bebas.eot?iefix') format('eot'),
+       url('/edoardo/wedding/css/fonts/Bebas.woff') format('woff'),
+       url('/edoardo/wedding/css/fonts/Bebas.ttf') format('truetype'),
+       url('/edoardo/wedding/css/fonts/Bebas.svg#webfontSRj8j0PE') format('svg');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Splendid ES';
+  src: url('/edoardo/wedding/css/fonts/SplendidES.eot');
+  src: local('Splendid ES'),
+       url('/edoardo/wedding/css/fonts/SplendidES.eot?iefix') format('eot'),
+       url('/edoardo/wedding/css/fonts/SplendidES.woff') format('woff'),
+       url('/edoardo/wedding/css/fonts/SplendidES.ttf') format('truetype'),
+       url('/edoardo/wedding/css/fonts/SplendidES.svg#webfonty9jpxneC') format('svg');
+  font-style: normal;
+  font-weight: normal;
+}
