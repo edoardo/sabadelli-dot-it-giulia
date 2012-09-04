@@ -14,7 +14,6 @@
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" media="all" href="/giulia/css/fonts.css" />
     <link rel="stylesheet" media="all" href="/giulia/css/style.css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -29,10 +28,13 @@
   <body lang="en">
     <div>
     <header>
-      <h1 class="bigger">postcards from Giulia</h1>
+      <h1>postcards from Giulia</h1>
     </header>
 
-    <a href="" class="nav prev" />previous</a>
+    <div id="container">
+    [% IF nav.prev %]
+    <a href="/giulia/[% nav.prev %]" class="nav prev" />previous</a>
+    [% END %]
 
     <div id="postcard" lang="[% postcard.lang %]" title="click to turn over">
       <div id="front">
@@ -56,13 +58,16 @@
           </section>
 
           <footer>
-            <small>&copy; copyright <a href="http://sabadelli.it/">sabadelli.it</a></small>
+            <small>&copy; copyright <a href="http://sabadelli.it/edoardo">Edoardo Sabadelli</a></small>
           </footer>
         </article>
       </div>
     </div>
 
-    <a href="" class="nav next" />next</a>
+    [% IF nav.next %]
+    <a href="/giulia/[% nav.next %]" class="nav next" />next</a>
+    [% END %]
+    </div>
 
     </div>
   </body>
