@@ -20,7 +20,7 @@
   </head>
   
   <body lang="en">
-    <form action="http://api-beta.sabadelli.it/giulia/postcard" method="POST">
+    <form action="https://api-beta.sabadelli.it/giulia/postcard" method="POST">
       <fieldset>
         <legend>Front</legend>
         Title:
