@@ -13,7 +13,15 @@ sub index {
 
     $self->stash->{template} = 'postcard';
 
-    $self->stash->{postcard} = $dao_postcard->get_last();
+    my $last_postcard = $dao_postcard->get_last();
+    my $prev_postcard = $last_postcard->get_previous();
+    my $next_postcard = $last_postcard->get_next();
+
+    $self->stash->{postcard} = $last_postcard;
+    $self->stash->{nav} = {
+        prev => ($prev_postcard and $prev_postcard->permalink()),
+        next => ($next_postcard and $next_postcard->permalink()),
+    };
 }
 
 # show a single postcard
@@ -23,7 +31,15 @@ sub read_postcard {
 
     $self->stash->{template} = 'postcard';
 
-    $self->stash->{postcard} = $dao_postcard->search_by_seo($self->stash('seo'));
+    my $postcard = $dao_postcard->search_by_seo($self->stash('seo'));
+    my $prev_postcard = $postcard->get_previous();
+    my $next_postcard = $postcard->get_next();
+
+    $self->stash->{postcard} = $postcard;
+    $self->stash->{nav} = {
+        prev => ($prev_postcard and $prev_postcard->permalink()),
+        next => ($next_postcard and $next_postcard->permalink()),
+    };
 }
 
 # postcards of the given year
