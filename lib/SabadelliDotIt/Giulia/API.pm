@@ -20,7 +20,7 @@ my $req_is_authorized = sub {
         # nginx sufficient ?!
         # https and http for api, specific redirects to http for URLs requiring authentication
 
-        if ($username eq 'giulia') { # XXX
+        if ($username =~ m{edoardo|giulia|margaux}) { # XXX
             return 1;
         }
 
@@ -47,25 +47,23 @@ sub startup {
     my $r = $self->routes;
 
     # /giulia
-    my $giulia_route = $r->waypoint('/giulia')
-            ->via('GET')
-            ->to('postcard#help');
+#   my $giulia_route = $r->bridge('/giulia')
+#           ->via('GET')
+#           ->to('postcard#help');
 
     # postcard
-    $giulia_route->route('/postcard/:id', id => qr/\d+/)
-            ->via('GET')
-            ->to('postcard#read');
-# XXX
-    $r->route('/giulia/postcard')->via('POST')->to('postcard#create');
+    $r->route('/giulia/postcard/:id', id => qr/\d+/)
+        ->via('GET')
+        ->to('postcard#read');
 
-#   # POST PUT DELETE need authentication
-#   my $postcard_route_auth = $r->bridge('/giulia/postcard')
-#                                    ->via(qw(POST PUT DELETE))
-#                                    ->to(cb => $req_is_authorized);
+    # POST PUT DELETE need authentication
+    my $postcard_route_auth = $r->bridge('/giulia/postcard')
+                                     ->via(qw(POST PUT DELETE))
+                                     ->to(cb => $req_is_authorized);
 
-#   $postcard_route_auth->route('/')->via('POST')->to('postcard#create');
-#   $postcard_route_auth->route('/:id', id => qr/\d+/)->via('PUT')->to('postcard#update');
-#   $postcard_route_auth->route('/:id', id => qr/\d+/)->via('DELETE')->to('postcard#delete');
+    $postcard_route_auth->route('/')->via('POST')->to('postcard#create');
+    $postcard_route_auth->route('/:id', id => qr/\d+/)->via('PUT')->to('postcard#update');
+    $postcard_route_auth->route('/:id', id => qr/\d+/)->via('DELETE')->to('postcard#delete');
 
     # for any non-matched method (GET, PUT, DELETE) reply with the help
 #    $giulia_route->route('/postcard')->to('postcard#help');

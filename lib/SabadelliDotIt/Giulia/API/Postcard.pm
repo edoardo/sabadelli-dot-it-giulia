@@ -15,9 +15,20 @@ sub help {
 sub create {
     my $self = shift;
 
-    $self->app->log->debug('POST data: ' . Data::Dumper::Dumper($self->req->params->to_hash));
+    my $params = $self->req->params->to_hash();
 
-    my $postcard = $dao_postcard->create($self->req->params->to_hash);
+    $self->app->log->debug('POST data: ' . Data::Dumper::Dumper($params));
+
+    if (! %$params) {
+        $self->render(
+            json => {message => 'invalid parameters'},
+            status => 411,
+        );
+
+        return;
+    }
+
+    my $postcard = $dao_postcard->create($params);
 
     if ($postcard && $postcard->content) {
 # XXX        $self->add_to_feed($postcard);

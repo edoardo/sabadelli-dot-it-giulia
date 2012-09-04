@@ -11,29 +11,29 @@ sub startup {
     my $r = $self->routes();
 
     # /giulia
-    my $postcard_route = $r->waypoint('/giulia')
-                ->via('GET')
-                ->to('postcards#index');
+    $r->route('/giulia')
+        ->via('GET')
+        ->to('postcards#index');
 
-    # /postcards/2012
-    $postcard_route->route('/:year', year => qr/\d{4}/)
+    # /giulia/2012
+    $r->route('/giulia/:year', year => qr/\d{4}/)
                ->via('GET')
                ->to('postcards#search_by_year');
-    # /postcards/2012/07
-    $postcard_route->route('/:year/:month', year => qr/\d{4}/, month => qr/\d{2}/)
+    # /giulia/2012/07
+    $r->route('/giulia/:year/:month', year => qr/\d{4}/, month => qr/\d{2}/)
                ->via('GET')
                ->to('postcards#search_by_month');
-    # /postcards/blog/2012/07/17
-    $postcard_route->route('/:year/:month/:day', year => qr/\d{4}/, month => qr/\d{2}/, day => qr/\d{2}/)
+    # /giulia/2012/07/17
+    $r->route('/giulia/:year/:month/:day', year => qr/\d{4}/, month => qr/\d{2}/, day => qr/\d{2}/)
                ->via('GET')
                ->to('postcards#search_by_day');
-    # /postcards/blog/2012/07/17/seo-title
-    $postcard_route->route('/:year/:month/:day/(*seo)', year => qr/\d{4}/, month => qr/\d{2}/, day => qr/\d{2}/)
+    # /giulia/2012/07/17/seo-title
+    $r->route('/giulia/:year/:month/:day/(*seo)', year => qr/\d{4}/, month => qr/\d{2}/, day => qr/\d{2}/)
                ->via('GET')
                ->to('postcards#read_postcard');
 
     # /giulia/admin
-    my $admin_route = $r->waypoint('/giulia/admin')
+    $r->route('/giulia/admin')
         ->via('GET')
         ->to('admin#index');
 
