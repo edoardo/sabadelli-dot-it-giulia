@@ -30,6 +30,29 @@ sub accessors {
 #
 # Instance methods
 #
+
+# the postcard sent right after the current one
+sub get_next {
+    my $self = shift;
+
+    if (! $self->{data}->{pubdate}) {
+        $self->fetch();
+    }
+
+    return __PACKAGE__->search_after_date($self->{data}->{pubdate});
+}
+
+# the postcard sent right before the current one
+sub get_previous {
+    my $self = shift;
+
+    if (! $self->{data}->{pubdate}) {
+        $self->fetch();
+    }
+
+    return __PACKAGE__->search_before_date($self->{data}->{pubdate});
+}
+
 # parse the JSON stored in the media field and return a hash instead
 sub media {
     my $self = shift;
@@ -81,6 +104,22 @@ sub create {
     $data->{pubdate} = time;
 
     return $self->SUPER::create($data);
+}
+
+sub permalink {
+    my $self = shift;
+
+    if (! $self->{data}->{seo}) {
+        $self->fetch();
+    }
+
+    my $pubdate = DateTime->from_epoch(epoch => $self->{data}->{pubdate});
+
+    return join(
+        '/',
+        $pubdate->ymd('/'),
+        $self->{data}->{seo},
+    );
 }
 
 #
@@ -145,6 +184,43 @@ sub search_by_seo {
             class => $type,
             sql => 'SELECT id FROM postcards WHERE seo = ?',
             binds => [$seo],
+        }
+    );
+
+    if ($records) {
+        return $records->[0];
+    }
+
+    return;
+}
+
+# before date
+sub search_before_date {
+    my ($type, $epoch) = @_;
+
+    my $records = $dao_base->search(
+        {
+            class => $type,
+            sql => 'SELECT id FROM postcards WHERE is_draft = ? AND pubdate < ? ORDER BY pubdate DESC LIMIT 1',
+            binds => [0, $epoch],
+        }
+    );
+
+    if ($records) {
+        return $records->[0];
+    }
+
+    return;
+}
+
+sub search_after_date {
+    my ($type, $epoch) = @_;
+
+    my $records = $dao_base->search(
+        {
+            class => $type,
+            sql => 'SELECT id FROM postcards WHERE is_draft = ? AND pubdate > ? ORDER BY pubdate ASC LIMIT 1',
+            binds => [0, $epoch],
         }
     );
 
