@@ -1,6 +1,6 @@
 $(function () {
 
-var apiRoot = 'http://api-beta.sabadelli.it/giulia';
+var apiRoot = 'https://api-beta.sabadelli.it/giulia';
 
 $('#mediaUploadButton').on('click', function (e) {
     var file = $('input[name="photo"]').get(0).files[0];
@@ -16,10 +16,10 @@ $('#mediaUploadButton').on('click', function (e) {
     };
 
     $.post('admin/sign_flickr_request', data, function (resp) {
+        data.photo = file;
         data.api_key = resp.api_key;
         data.auth_token = resp.auth_token;
         data.api_sig = resp.api_sig;
-        data.photo = file;
 
         var formData = new FormData();
 
@@ -56,10 +56,8 @@ $('#mediaUploadButton').on('click', function (e) {
 
                     $.get('http://api.flickr.com/services/rest/?' + queryString, function (resp) {
 console.log('get sizes resp', resp);
-                        var r = resp;
-
-                        if (r.stat === 'ok') {
-                            r.sizes.size.forEach(function (size) {
+                        if (resp.stat === 'ok') {
+                            resp.sizes.size.forEach(function (size) {
                                 if (size.label === 'Medium 800') {
                                     var media = {
                                         service: 'flickr',
