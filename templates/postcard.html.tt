@@ -52,7 +52,7 @@
           </section>
 
           <section class="right">
-            <img src="" class="stamp [%postcard.from_country %]"/>
+            <img class="stamp" src="/giulia/css/media/stamp-[% postcard.from_country %]-1.png" />
             <p>[% postcard.recipients %]</p>
             <p class="bigger">[% postcard.to_country %]</p>
           </section>
