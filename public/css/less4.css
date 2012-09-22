@@ -86,40 +86,83 @@ cols    1     2      3      4      5      6      7      8      9      10
 px      68    160    252    344    436    528    620    712    804    896    */
 
 body {
-    background: transparent url(/giulia/css/media/177295-pattern.png);
+    background: transparent url(/giulia/css/media/555284-pattern.png);
     color: rgb(60,60,60);
     -webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
 }
 
+a {
+    color: #724e5a;/*#827276;*/
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 body > div {
-    width: 1024px;
+    width: 1096px;
     margin: auto;
+    background: transparent url('/giulia/css/media/postcards-bg.png') no-repeat center 40px;
 }
 
 header h1 {
-    padding-left: 92px;
+    padding-left: 120px;
+    font-family: SpicyRiceRegular, Verdana, sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    color: #401b27; /*#3b2d38;*/
+    letter-spacing: 0;
+    -webkit-transform: rotate(2deg);
+    -moz-transform: rotate(2deg);
+    -ms-transform: rotate(2deg);
+    -o-transform: rotate(2deg);
 }
 
 .hidden {display: none;}
 
+header + div#container {
+    position: relative;
+    height: 574px;
+}
+
 a.nav {
-    display: block;
-    float: left;
-    width: 92px;
+    position: absolute;
+    height: 100%;
+    width: 128px;
+    color: transparent;
+/*border: 1px solid red;*/
+}
+
+a.nav.prev {
+    left: 0;
+}
+
+a.nav.prev:hover {
+    background: transparent url('/giulia/css/media/navigate-left.png') no-repeat center;
+}
+
+a.nav.next {
+    right: 0;
+}
+
+a.nav.next:hover {
+    background: transparent url('/giulia/css/media/navigate-right.png') no-repeat  center;
 }
 
 #postcard {
-    float: left;
+    position: absolute;
+    left: 128px;
     width: 800px;
     height: 534px;
     background: #fff;
     padding: 20px;
-    -moz-box-shadow: 3px 3px 5px 6px #bbbbbb;
-    box-shadow: 3px 3px 10px 4px #bbbbbb;
+    -moz-box-shadow: 2px 2px 10px -3px #333333;
+    box-shadow: 2px 2px 10px -3px #333333;
 }
 
 #postcard p {
-    font-family: NoteThis, sans-serif;
+    font-family: NoteThis, Verdana, sans-serif;
 }
 
 #back h1 {
@@ -129,13 +172,22 @@ a.nav {
 
 #back time {
     position: absolute;
+    top: 10%;
     left: 60%;
     font-family: UnderwoodChampionRegular, monospace;
-    font-size: 12px;
-    -webkit-transform: rotate(24deg);
-    -moz-transform: rotate(24deg);
-    -ms-transform: rotate(24deg);
-    -o-transform: rotate(24deg);
+    text-align: center;
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+}
+
+#back time.no {
+    width: 140px;
+    height: 140px;
+    background: transparent url('/giulia/css/media/postmark-no.png') no-repeat center;
+    font-size: 14px;
+    line-height: 10.5em;
 }
 
 .left {
@@ -147,7 +199,8 @@ a.nav {
 }
 
 .left p {
-    font-size: 26px;
+    font-size: 24px;
+    padding-top: 10px;
 }
 
 .right {
@@ -162,6 +215,7 @@ a.nav {
 }
 
 .right p {
+    font-size: 22px;
     padding: 0 20px;
     border-bottom: 1px solid #c9c9c9;
 }
@@ -171,7 +225,7 @@ a.nav {
 }
 
 .right p.bigger {
-    margin: 20px 30px 0 0;
+    margin: 20px 0 0 0;
     border-bottom: 2px solid #666666;
     text-align: center;
 }
@@ -179,10 +233,14 @@ a.nav {
 .right img.stamp {
     float: right;
     display: block;
-    width: 100px;
-    height: 120px;
-    border: 1px solid #c9c9c9;
+    width: 134px;
+    height: 134px;
+    -webkit-transform: rotate(-1deg);
+    -moz-transform: rotate(-1deg);
+    -ms-transform: rotate(-1deg);
+    -o-transform: rotate(-1deg);
 }
+
 
 /*      Tablet Layout: 768px.
         Gutters: 24px.
