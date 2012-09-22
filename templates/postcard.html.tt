@@ -1,9 +1,10 @@
-[% USE date %]
+[%-
+    USE date;
 
-[% MACRO date2iso8601(epoch) GET date.format(epoch, '%F') %]
-[% MACRO date2path(epoch) GET date.format(epoch, '%Y/%m/%d') %]
-[% MACRO date2stamp(epoch) GET date.format(epoch, '%Y.%m.%d') %]
-
+    MACRO date2iso8601(epoch) GET date.format(epoch, '%F');
+    MACRO date2path(epoch) GET date.format(epoch, '%Y/%m/%d');
+    MACRO date2stamp(epoch) GET date.format(epoch, '%Y.%m.%d');
+-%]
 <!DOCTYPE html>
 <html>
 
@@ -19,55 +20,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
 
-    <script type="text/javascript" src="/giulia/js/underscore-min.js"></script>
     <script type="text/javascript" src="/giulia/js/zepto.js"></script>
-    <script type="text/javascript" src="/giulia/js/backbone.js"></script>
     <script type="text/javascript" src="/giulia/js/site.js"></script>
   </head>
   
   <body lang="en">
     <div>
-    <header>
-      <h1>postcards from Giulia</h1>
-    </header>
+      <header>
+        <h1>postcards from Giulia</h1>
+      </header>
 
-    <div id="container">
-    [% IF nav.prev %]
-    <a href="/giulia/[% nav.prev %]" class="nav prev" />previous</a>
-    [% END %]
+      <div id="container">
+        [%- IF nav.prev %]
+        <a href="/giulia/[% nav.prev %]" class="nav prev" />previous</a>
+        [%- END %]
 
-    <div id="postcard" lang="[% postcard.lang %]" title="click to turn over">
-      <div id="front">
-        [% IF postcard.media.type == 'photo' %]
-        <img src="[% postcard.media.url %]" />
-        [% END %]
+        <div id="postcard" lang="[% postcard.lang %]" title="click to turn over">
+          <div id="front">
+            [%- IF postcard.media.type == 'photo' %]
+            <img src="[% postcard.media.url %]" />
+            [%- END %]
+          </div>
+
+          <div id="back">
+            <article>
+              <section class="left">
+                <a href="[% date2path(postcard.pubdate) %]/[% postcard.seo %]"><h1 class="small">[% postcard.title %]</h1></a>
+                <time datetime="[% date2iso8601(postcard.pubdate) %]" class="[% postcard.from_country %]">[% date2stamp(postcard.pubdate,) %]</time>
+                [% postcard.content -%]
+              </section>
+
+              <section class="right">
+                <img class="stamp" src="/giulia/css/media/stamp-[% postcard.from_country %]-1.png" />
+                <p>[% postcard.recipients %]</p>
+                <p class="bigger">[% postcard.to_country %]</p>
+              </section>
+
+              <footer>
+                <small>&copy; copyright <a href="http://sabadelli.it/edoardo">Edoardo Sabadelli</a></small>
+              </footer>
+            </article>
+          </div>
+        </div>
+
+        [%- IF nav.next %]
+        <a href="/giulia/[% nav.next %]" class="nav next" />next</a>
+        [%- END %]
       </div>
-
-      <div id="back">
-        <article>
-          <section class="left">
-            <a href="[% date2path(postcard.pubdate) %]/[% postcard.seo %]"><h1 class="small">[% postcard.title %]</h1></a>
-            <time datetime="[% date2iso8601(postcard.pubdate) %]" class="[% postcard.from_country %]">[% date2stamp(postcard.pubdate,) %]</time>
-            [% postcard.content %]
-          </section>
-
-          <section class="right">
-            <img class="stamp" src="/giulia/css/media/stamp-[% postcard.from_country %]-1.png" />
-            <p>[% postcard.recipients %]</p>
-            <p class="bigger">[% postcard.to_country %]</p>
-          </section>
-
-          <footer>
-            <small>&copy; copyright <a href="http://sabadelli.it/edoardo">Edoardo Sabadelli</a></small>
-          </footer>
-        </article>
-      </div>
-    </div>
-
-    [% IF nav.next %]
-    <a href="/giulia/[% nav.next %]" class="nav next" />next</a>
-    [% END %]
-    </div>
 
     </div>
   </body>
