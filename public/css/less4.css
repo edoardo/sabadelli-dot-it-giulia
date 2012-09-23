@@ -92,7 +92,7 @@ body {
 }
 
 a {
-    color: #724e5a;/*#827276;*/
+    color: #724e5a;
     text-decoration: none;
 }
 
@@ -111,7 +111,7 @@ header h1 {
     font-family: SpicyRiceRegular, Verdana, sans-serif;
     font-size: 24px;
     font-weight: normal;
-    color: #401b27; /*#3b2d38;*/
+    color: #401b27;
     letter-spacing: 0;
     -webkit-transform: rotate(2deg);
     -moz-transform: rotate(2deg);
