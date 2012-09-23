@@ -32,7 +32,7 @@
 
       <div id="container">
         [%- IF nav.prev %]
-        <a href="/giulia/[% nav.prev %]" class="nav prev" />previous</a>
+        <a href="/giulia/[% nav.prev %]" class="nav prev" title="previous" />previous</a>
         [%- END %]
 
         <div id="postcard" lang="[% postcard.lang %]" title="click to turn over">
@@ -64,7 +64,7 @@
         </div>
 
         [%- IF nav.next %]
-        <a href="/giulia/[% nav.next %]" class="nav next" />next</a>
+        <a href="/giulia/[% nav.next %]" class="nav next" title="next" />next</a>
         [%- END %]
       </div>
 
