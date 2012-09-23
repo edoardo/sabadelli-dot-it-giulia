@@ -1,0 +1,9 @@
+TODO list:
+
+- make it work for smaller screens and mobile
+- allow for different stamps (store the info in the db)
+- review postmark graphics
+- make custom error pages (ie. 404, 500)
+- add localization for en, it, no
+- add translation tool for the back side
+
