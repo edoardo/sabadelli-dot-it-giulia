@@ -27,7 +27,7 @@
   <body lang="en">
     <div>
       <header>
-        <h1>postcards from Giulia</h1>
+        <a href="/giulia"><h1>postcards from Giulia</h1></a>
       </header>
 
       <div id="container">

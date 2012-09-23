@@ -119,6 +119,10 @@ header h1 {
     -o-transform: rotate(2deg);
 }
 
+header a:hover {
+    text-decoration: none;
+}
+
 .hidden {display: none;}
 
 header + div#container {
