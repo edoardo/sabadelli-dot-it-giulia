@@ -66,7 +66,7 @@ console.log('get sizes resp', resp);
                                         url: size.source
                                     };
 
-                                    $('input[name="media"]').val(JSON.stringify(media));
+                                    $('textarea[name="media"]').val(JSON.stringify(media));
                                 }
                             });
                         }
