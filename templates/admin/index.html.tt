@@ -35,7 +35,7 @@
         Media:
         <input type="file" name="photo" />
         <button type="button" id="mediaUploadButton">Upload</button><br />
-        <textarea name="media" cols="100" placeholder="Filled in automatically after uploading a photo">[% postcard.media %]</textarea>
+        <textarea name="media" cols="100" placeholder="Filled in automatically after uploading a photo">[% postcard.media_raw %]</textarea>
       </fieldset>
       <fieldset>
         <legend>Back</legend>

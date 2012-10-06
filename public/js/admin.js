@@ -88,9 +88,11 @@ console.log('get sizes resp', resp);
 $('#postcardSendButton').on('click', function (e) {
     var postcard = {};
 
-    ['title','from_country','to_country','recipients','content_raw','media','lang'].forEach(function (fieldName) {
+    ['title','from_country','to_country','recipients','content_raw','media','lang','id'].forEach(function (fieldName) {
         postcard[fieldName] = $('form').find('*[name="' + fieldName + '"]').val();
     });
+
+    postcard['is_draft'] = $('input[name="is_draft"]').prop('checked') ? 1 : 0;
 
     $.post(apiRoot + '/postcard', postcard, function (resp) {
         console.log('postcard resp', resp);
