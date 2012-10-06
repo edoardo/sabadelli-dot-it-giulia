@@ -68,6 +68,17 @@ sub media {
     return;
 }
 
+# return the plain string as stored in the db
+sub media_raw {
+    my $self = shift;
+
+    if (! $self->{data}->{media}) {
+        $self->fetch();
+    }
+
+    return $self->{data}->{media};
+}
+
 sub to_country {
     my $self = shift;
 
