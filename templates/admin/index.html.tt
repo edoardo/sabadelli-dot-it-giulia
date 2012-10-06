@@ -1,3 +1,10 @@
+[%-
+    countries = [
+        {id => 'it', name => 'Italy'},
+        {id => 'no', name => 'Norway'},
+        {id => 'za', name => 'South Africa'}
+    ]
+-%]
 <!DOCTYPE html>
 <html>
 
@@ -24,40 +31,52 @@
       <fieldset>
         <legend>Front</legend>
         Title:
-        <input name="title" type="text" /><br />
+        <input name="title" type="text" value="[% postcard.title %]" /><br />
         Media:
         <input type="file" name="photo" />
-        <button type="button" id="mediaUploadButton">Upload</button>
+        <button type="button" id="mediaUploadButton">Upload</button><br />
+        <textarea name="media" cols="100" placeholder="Filled in automatically after uploading a photo">[% postcard.media %]</textarea>
       </fieldset>
       <fieldset>
         <legend>Back</legend>
         From country:
         <select name="from_country">
-          <option value="it">Italy</option>
-          <option value="no" selected>Norway</option>
-          <option value="za">South Africa</option>
+          [% FOREACH country IN countries %]
+          <option value="[% country.id %]"[% IF country.id == postcard.from_country %] selected[% END %]>[% country.name %]</option>
+          [% END %]
         </select><br />
         To country:
         <select name="to_country">
-          <option value="it">Italy</option>
-          <option value="no">Norway</option>
-          <option value="za">South Africa</option>
+          [% FOREACH country IN countries %]
+          <option value="[% country.id %]"[% IF country.id == postcard.to_country %] selected[% END %]>[% country.name %]</option>
+          [% END %]
         </select><br />
-        Recipients:
-        <textarea name="recipients" placeholder="Insert the text for the recipients box"></textarea>
+        <label for="recipients">Recipients:</label><br />
+        <textarea name="recipients" rows="4" cols="100" placeholder="Insert the text for the recipients box">[% postcard.recipients %]</textarea>
       </fieldset>
       <fieldset>
         <legend>Message</legend>
-        <textarea name="content_raw" placeholder="Insert the message"></textarea><br />
+        <textarea name="content_raw" rows="30" cols="100" placeholder="Insert the message">[% postcard.content_raw %]</textarea><br />
         Message written in:
         <select name="lang">
-          <option value="af">Afrikaans</option>
-          <option value="it">Italian</option>
-          <option value="en" selected>English</option>
-          <option value="no">Norwegian</option>
+          [% languages = [
+            {id => 'af', name => 'Afrikaans'},
+            {id => 'en', name => 'English'},
+            {id => 'fur', name => 'Friulian'},
+            {id => 'it', name => 'Italian'},
+            {id => 'no', name => 'Norwegian'}
+            ]
+          %]
+          [% FOREACH lang IN languages %]
+          <option value="[% lang.id %]"[% IF lang.id == postcard.lang %] selected[% END %]>[% lang.name %]</option>
+          [% END %]
         </select>
       </fieldset>
-      <input type="hidden" name="media" />
+      <fieldset>
+        <legend>Misc</legend>
+        Draft: <input type="checkbox" name="is_draft" checked="checked" />
+      </fieldset>
+      <input type="hidden" name="id" value="[% postcard.id %]" />
       <input type="reset" />
       <input type="submit" value="Save" />
       <button type="button" id="postcardSendButton">Post</button>

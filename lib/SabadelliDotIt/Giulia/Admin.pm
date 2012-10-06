@@ -4,6 +4,10 @@ use Mojo::Util ();
 
 use Mojo::Base 'Mojolicious::Controller';
 
+use SabadelliDotIt::Giulia::DAO::Postcard;
+
+my $dao_postcard = 'SabadelliDotIt::Giulia::DAO::Postcard';
+
 # list published and draft postcards
 # /giulia/admin
 sub index {
@@ -12,6 +16,15 @@ sub index {
 #   $self->stash->{content} = {
 #       postcard => $dao_postcard->get_last(),
 #   };
+}
+
+sub edit_postcard {
+    my $self = shift;
+
+    $self->stash->{template} = 'admin/index';
+
+    my $postcard = $dao_postcard->new($self->stash('id'));
+    $self->stash->{postcard} = $postcard;
 }
 
 sub sign_flickr_request {

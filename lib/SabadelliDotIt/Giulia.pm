@@ -37,6 +37,10 @@ sub startup {
         ->via('GET')
         ->to('admin#index');
 
+    $r->route('/giulia/admin/:id', id => qr/\d+/)
+        ->via('GET')
+        ->to('admin#edit_postcard');
+
     $r->route('/giulia/admin/sign_flickr_request')
         ->via('POST')
         ->to('admin#sign_flickr_request');
