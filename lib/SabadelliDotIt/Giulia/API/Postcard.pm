@@ -85,11 +85,22 @@ sub read {
 sub update {
     my $self = shift;
 
-    $self->app->log->debug('PUT data: ' . Data::Dumper::Dumper($self->req->json));
+    my $params = $self->req->params->to_hash();
+
+    $self->app->log->debug('PUT data: ' . Data::Dumper::Dumper($params));
+
+    if (! %$params) {
+        $self->render(
+            json => {message => 'invalid parameters'},
+            status => 411,
+        );
+
+        return;
+    }
 
     my $postcard = $dao_postcard->new($self->stash('id'));
 
-    if ($postcard && $postcard->update($self->req->json)) {
+    if ($postcard && $postcard->update($params)) {
         $self->render(json => {message => 'success'});
     }
     else {
