@@ -74,7 +74,7 @@
       </fieldset>
       <fieldset>
         <legend>Misc</legend>
-        Draft: <input type="checkbox" name="is_draft" checked="checked" />
+        Draft: <input type="checkbox" name="is_draft" [% IF not postcard.id or postcard.is_draft %]checked="checked"[% END %] />
       </fieldset>
       [% IF postcard.id %]
       <input type="hidden" name="id" value="[% postcard.id %]" />
