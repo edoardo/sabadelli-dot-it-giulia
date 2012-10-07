@@ -42,6 +42,7 @@ sub get_next {
     return __PACKAGE__->search_after_date($self->{data}->{pubdate});
 }
 
+
 # the postcard sent right before the current one
 sub get_previous {
     my $self = shift;
@@ -52,6 +53,7 @@ sub get_previous {
 
     return __PACKAGE__->search_before_date($self->{data}->{pubdate});
 }
+
 
 # parse the JSON stored in the media field and return a hash instead
 sub media {
@@ -68,6 +70,7 @@ sub media {
     return;
 }
 
+
 # return the plain string as stored in the db
 sub media_raw {
     my $self = shift;
@@ -77,6 +80,22 @@ sub media_raw {
     }
 
     return $self->{data}->{media};
+}
+
+sub permalink {
+    my $self = shift;
+
+    if (! $self->{data}->{seo}) {
+        $self->fetch();
+    }
+
+    my $pubdate = DateTime->from_epoch(epoch => $self->{data}->{pubdate});
+
+    return join(
+        '/',
+        $pubdate->ymd('/'),
+        $self->{data}->{seo},
+    );
 }
 
 sub to_country {
@@ -99,43 +118,30 @@ sub to_country {
     return;
 }
 
-sub create {
+sub update {
     my ($self, $data) = @_;
 
-    # set computed fields
-    my $seo_title = lc $data->{title};
+    $data = _prepare_data($data);
 
-    $seo_title =~ s{\s+}{-}g;
-    $seo_title =~ s{[^\w\-]}{}g;
-
-    $data->{seo} = $seo_title;
-
-    $data->{content} = Text::Markdown::markdown($data->{content_raw});
-
-    $data->{pubdate} = time;
-
-    return $self->SUPER::create($data);
+    return $self->SUPER::update($data);
 }
 
-sub permalink {
-    my $self = shift;
-
-    if (! $self->{data}->{seo}) {
-        $self->fetch();
-    }
-
-    my $pubdate = DateTime->from_epoch(epoch => $self->{data}->{pubdate});
-
-    return join(
-        '/',
-        $pubdate->ymd('/'),
-        $self->{data}->{seo},
-    );
-}
 
 #
 # Class methods
 #
+
+sub create {
+    my ($type, $data) = @_;
+
+    $data = _prepare_data($data);
+
+    $data->{pubdate} = time;
+
+    return $type->SUPER::create($data);
+}
+
+
 # last postcard
 sub get_last {
     my $type = shift;
@@ -281,6 +287,26 @@ sub search_recent {
             binds => [0, $limit || 1],
         }
     );
+}
+
+#
+# Private methods
+#
+
+sub _prepare_data {
+    my $data = shift;
+
+    # set computed fields
+    my $seo_title = lc $data->{title};
+
+    $seo_title =~ s{\s+}{-}g;
+    $seo_title =~ s{[^\w\-]}{}g;
+
+    $data->{seo} = $seo_title;
+
+    $data->{content} = Text::Markdown::markdown($data->{content_raw});
+
+    return $data;
 }
 
 1;
