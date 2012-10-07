@@ -99,4 +99,14 @@ $('#postcardSendButton').on('click', function (e) {
     });
 });
 
+$('#postcardDeleteButton').on('click', function (e) {
+    $.ajax({
+        type: 'DELETE',
+        url: apiRoot + '/postcard/' + $('input[name="id"]').val(),
+        success: function (resp) {
+            alert('postcard DELETED!');
+        }
+    });
+});
+
 });

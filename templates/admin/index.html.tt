@@ -78,8 +78,8 @@
       </fieldset>
       <input type="hidden" name="id" value="[% postcard.id %]" />
       <input type="reset" />
-      <input type="submit" value="Save" />
-      <button type="button" id="postcardSendButton">Post</button>
+      <button type="button" id="postcardSendButton">Post</button><br />
+      <button type="button" id="postcardDeleteButton">Delete</button>
     </form>
   </body>
   
