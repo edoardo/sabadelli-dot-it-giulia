@@ -85,7 +85,22 @@ console.log('get sizes resp', resp);
     });
 });
 
-$('#postcardSendButton').on('click', function (e) {
+$('#postcardCreateButton').on('click', function (e) {
+    var postcard = {};
+
+    ['title','from_country','to_country','recipients','content_raw','media','lang'].forEach(function (fieldName) {
+        postcard[fieldName] = $('form').find('*[name="' + fieldName + '"]').val();
+    });
+
+    postcard['is_draft'] = $('input[name="is_draft"]').prop('checked') ? 1 : 0;
+
+    $.post(apiRoot + '/postcard', postcard, function (resp) {
+        console.log('postcard create success', resp);
+        alert('postcard successfully created!');
+    });
+});
+
+$('#postcardEditButton').on('click', function (e) {
     var postcard = {};
 
     ['title','from_country','to_country','recipients','content_raw','media','lang','id'].forEach(function (fieldName) {
@@ -94,8 +109,14 @@ $('#postcardSendButton').on('click', function (e) {
 
     postcard['is_draft'] = $('input[name="is_draft"]').prop('checked') ? 1 : 0;
 
-    $.post(apiRoot + '/postcard', postcard, function (resp) {
-        console.log('postcard resp', resp);
+    $.ajax({
+        type: 'PUT',
+        url: apiRoot + '/postcard/' + $('input[name="id"]').val(),
+        data: postcard,
+        success: function (resp) {
+            console.log('postcard edit success', resp);
+            alert('postcard successfully edited!');
+        }
     });
 });
 
@@ -104,7 +125,8 @@ $('#postcardDeleteButton').on('click', function (e) {
         type: 'DELETE',
         url: apiRoot + '/postcard/' + $('input[name="id"]').val(),
         success: function (resp) {
-            alert('postcard DELETED!');
+            console.log('postcard delete success', resp);
+            alert('postcard successfully DELETED!');
         }
     });
 });

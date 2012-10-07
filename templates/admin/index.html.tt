@@ -76,10 +76,16 @@
         <legend>Misc</legend>
         Draft: <input type="checkbox" name="is_draft" checked="checked" />
       </fieldset>
+      [% IF postcard.id %]
       <input type="hidden" name="id" value="[% postcard.id %]" />
+      [% END %]
       <input type="reset" />
-      <button type="button" id="postcardSendButton">Post</button><br />
+      [% IF postcard.id %]
+      <button type="button" id="postcardEditButton">Edit</button><br />
       <button type="button" id="postcardDeleteButton">Delete</button>
+      [% ELSE %]
+      <button type="button" id="postcardCreateButton">Create</button><br />
+      [% END %]
     </form>
   </body>
   
