@@ -73,7 +73,11 @@ warn 'create sql: ' . $sql . "\n";
         undef,
         values %$data
     );
-warn 'create error ' . $dbh->err . $dbh->errstr . $sql . "\n";
+
+    if ($dbh->err) {
+        warn 'create error ' . $dbh->err . $dbh->errstr . $sql . "\n";
+    }
+
     return $type->new($dbh->last_insert_id(undef, undef, $source, undef));
 }
 
@@ -121,13 +125,29 @@ sub update {
 
     return if ! $self->id;
 
+    my $dbh = dbh();
     my $source = $self->source();
-    my $fields = join ', ' => map { "$_ = ?" } keys %$data;
 
-    my $sth = $self->dbh->prepare("UPDATE $source SET $fields WHERE id = ?");
-    $sth->execute(values %$data, $self->id);
+    my $sql = sprintf(
+        'UPDATE %s SET %s WHERE id = ?',
+        $source,
+        join(', ' => map { "$_ = ?" } keys %$data)
+    );
 
-    return 1; # XXX
+warn 'update sql: ' . $sql . "\n";
+
+    my $sth = $dbh->do(
+        $sql,
+        undef,
+        values %$data,
+        $self->id,
+    );
+
+    if ($dbh->err) {
+        warn 'update error ' . $dbh->err . $dbh->errstr . $sql . "\n";
+    }
+
+    return $self;
 }
 
 sub id {
