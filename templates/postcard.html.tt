@@ -45,7 +45,7 @@
           <div id="back">
             <article>
               <section class="left">
-                <a href="[% date2path(postcard.pubdate) %]/[% postcard.seo %]"><h1 class="small">[% postcard.title %]</h1></a>
+                <a href="/giulia/[% date2path(postcard.pubdate) %]/[% postcard.seo %]"><h1>[% postcard.title %]</h1></a>
                 <time datetime="[% date2iso8601(postcard.pubdate) %]" class="[% postcard.from_country %]">[% date2stamp(postcard.pubdate,) %]</time>
                 [% postcard.content -%]
               </section>
