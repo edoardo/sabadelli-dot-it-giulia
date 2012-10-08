@@ -105,6 +105,7 @@ sub to_country {
         it => 'Italia',
         no => 'Norge',
         za => 'South Africa',
+        www => 'Around the world',
     );
 
     if (! $self->{data}->{to_country}) {

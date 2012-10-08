@@ -3,6 +3,7 @@
         {id => 'it', name => 'Italy'},
         {id => 'no', name => 'Norway'},
         {id => 'za', name => 'South Africa'}
+        {id => 'www', name => 'Around the world'}
     ]
 -%]
 <!DOCTYPE html>
