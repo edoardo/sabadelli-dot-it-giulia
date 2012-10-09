@@ -6,5 +6,6 @@ TODO list:
 - review postmark graphics
 - make custom error pages (ie. 404, 500)
 - add localization for en, it, no
-- add translation tool for the back side
+- add toolbox for the back side (message translation, pic download...)
+- add Atom/RSS feed
 
