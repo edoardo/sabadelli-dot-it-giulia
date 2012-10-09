@@ -139,6 +139,7 @@ a.nav {
 
 a.nav.prev {
     left: 0;
+    background: transparent url('/giulia/css/media/navigate-previous-inactive.png') no-repeat center;
 }
 
 a.nav.prev:hover {
@@ -147,6 +148,7 @@ a.nav.prev:hover {
 
 a.nav.next {
     right: 0;
+    background: transparent url('/giulia/css/media/navigate-next-inactive.png') no-repeat center;
 }
 
 a.nav.next:hover {
