@@ -16,7 +16,7 @@
     <![endif]-->
 
     <link rel="alternate" type="application/atom+xml" title="Postcards from Giulia Atom feed" href="http://sabadelli.it/giulia/feed" />
-    <link rel="stylesheet" media="all" href="/giulia/css/style.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="/giulia/css/style.css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
