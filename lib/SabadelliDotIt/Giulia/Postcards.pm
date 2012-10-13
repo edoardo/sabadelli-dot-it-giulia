@@ -72,15 +72,19 @@ sub search_by_day {
 }
 
 # Atom feed
-# /edoardo/blog/feed
+# /giulia/feed
 # XXX probably serve it statically
 sub feed {
     my $self = shift;
 
-    require XML::Atom::Feed;
-    require XML::Atom::Entry;
+    $self->stash->{template} = 'feed';
 
-    $self->render(atom => 'TODO Atom feed');
+    # get last 10 postcards
+    my $postcards = $dao_postcard->search_posted(2);
+    $self->stash->{postcards} = $postcards;
+    $self->stash->{feed} = {last_update => $postcards->[0]->pubdate};
+
+    $self->render(format => 'atom');
 }
 
 1;

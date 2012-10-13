@@ -32,6 +32,11 @@ sub startup {
                ->via('GET')
                ->to('postcards#read_postcard');
 
+    # /giulia/feed
+    $r->route('/giulia/feed')
+        ->via('GET')
+        ->to('postcards#feed');
+
     # /giulia/admin
     $r->route('/giulia/admin')
         ->via('GET')
