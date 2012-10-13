@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+[%-
+    USE date;
+
+    MACRO date2iso8601(epoch) GET date.format(epoch, '%FT%TZ');
+%]
+  <title>Postcards from Giulia</title>
+  <id>http://sabadelli.it/giulia</id>
+  <link rel="self" href="http://sabadelli.it/giulia/feed" />
+  <link rel="alternate" href="http://sabadelli.it/giulia" />
+  <updated>[% date2iso8601(feed.last_update) %]</updated>
+  <author>
+    <name>Giulia Sabadelli</name>
+  </author>
+
+  [%- FOREACH postcard IN postcards %]
+  <entry>
+    <id>http://sabadelli.it/giulia/[% postcard.permalink %]</id>
+    <title>[% postcard.title %]</title>
+    <link rel="alternate" href="http://sabadelli.it/giulia/[% postcard.permalink %]"/>
+    <updated>[% date2iso8601(postcard.pubdate) %]</updated>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <img src="[% postcard.media.url %]" />
+        [% postcard.content -%]
+      </div>
+    </content>
+  </entry>
+  [%- END %]
+
+</feed>
