@@ -15,6 +15,7 @@
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
+    <link rel="alternate" type="application/rss+xml" title="Postcards from Giulia Atom feed" href="http://sabadelli.it/giulia/feed" />
     <link rel="stylesheet" media="all" href="/giulia/css/style.css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
