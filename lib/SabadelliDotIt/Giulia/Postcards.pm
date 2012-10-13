@@ -80,7 +80,7 @@ sub feed {
     $self->stash->{template} = 'feed';
 
     # get last 10 postcards
-    my $postcards = $dao_postcard->search_posted(2);
+    my $postcards = $dao_postcard->search_posted(10);
     $self->stash->{postcards} = $postcards;
     $self->stash->{feed} = {last_update => $postcards->[0]->pubdate};
 
