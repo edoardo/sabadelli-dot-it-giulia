@@ -33,13 +33,13 @@
 
       <div id="container">
         [%- IF nav.prev %]
-        <a href="/giulia/[% nav.prev %]" class="nav prev" title="previous" />previous</a>
+        <a href="/giulia/[% nav.prev %]" class="nav prev" title="previous">previous</a>
         [%- END %]
 
         <div id="postcard" lang="[% postcard.lang %]" title="click to turn over">
           <div id="front">
             [%- IF postcard.media.type == 'photo' %]
-            <img src="[% postcard.media.url %]" />
+            <img src="[% postcard.media.url %]" alt="postcard front image" />
             [%- END %]
           </div>
 
@@ -52,7 +52,7 @@
               </section>
 
               <section class="right">
-                <img class="stamp" src="/giulia/css/media/stamp-[% postcard.from_country %]-1.png" />
+                <img class="stamp" src="/giulia/css/media/stamp-[% postcard.from_country %]-1.png" alt="stamp" />
                 <p>[% postcard.recipients %]</p>
                 <p class="bigger">[% postcard.to_country %]</p>
               </section>
@@ -65,7 +65,7 @@
         </div>
 
         [%- IF nav.next %]
-        <a href="/giulia/[% nav.next %]" class="nav next" title="next" />next</a>
+        <a href="/giulia/[% nav.next %]" class="nav next" title="next">next</a>
         [%- END %]
       </div>
 
