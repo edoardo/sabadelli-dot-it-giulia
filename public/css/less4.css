@@ -173,6 +173,10 @@ a.nav.next:hover {
     font-family: NoteThis, Verdana, sans-serif;
 }
 
+#front img {
+    cursor: pointer;
+}
+
 #back h1 {
     font-style: italic;
     font-size: 16px;
