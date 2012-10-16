@@ -22,6 +22,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
 
+    <!-- Open Graph -->
+    <meta property="og:url" content="http://sabadelli.it/giulia/[% postcard.permalink %]" />
+    <meta property="og:title" content="[% postcard.title %]" />
+    <meta property="og:site_name" content="Postcards from Giulia" />
+    <meta property="og:image" content="[% postcard.media.url %]" />
+
     <script type="text/javascript" src="/giulia/js/jquery-min.js"></script>
     <script type="text/javascript" src="/giulia/js/site.js"></script>
   </head>
