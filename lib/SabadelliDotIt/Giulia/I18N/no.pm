@@ -12,7 +12,7 @@ our %Lexicon = (
 'postcards from Giulia' => 'postkort fra Giulia',
 'previous' => 'forrige',
 'click to flip' => 'kilkk for å snu',
-'postcard front image' => 'postkort foran bilde',
+'postcard front image' => 'postkort bilde',
 'stamp' => 'frimerke',
 'next' => 'neste',
 
