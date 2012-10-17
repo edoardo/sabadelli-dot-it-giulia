@@ -11,12 +11,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Postcards from Giulia - [% postcard.title %]</title>
+    <title>[% h.l('Postcards from Giulia') %] - [% postcard.title %]</title>
     <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link rel="alternate" type="application/atom+xml" title="Postcards from Giulia Atom feed" href="http://sabadelli.it/giulia/feed" />
+    <link rel="alternate" type="application/atom+xml" title="[% h.l('Postcards from Giulia') %] Atom feed" href="http://sabadelli.it/giulia/feed" />
     <link rel="stylesheet" type="text/css" media="all" href="/giulia/css/style.css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -32,21 +32,21 @@
     <script type="text/javascript" src="/giulia/js/site.js"></script>
   </head>
   
-  <body lang="en">
+  <body lang="[% app.lang || 'en' %]">
     <div>
       <header>
-        <a href="/giulia"><h1>postcards from Giulia</h1></a>
+        <a href="/giulia"><h1>[% h.l('postcards from Giulia') %]</h1></a>
       </header>
 
       <div id="container">
         [%- IF nav.prev %]
-        <a href="/giulia/[% nav.prev %]" class="nav prev" title="previous">previous</a>
+        <a href="/giulia/[% nav.prev %]" class="nav prev" title="[% h.l('previous') %]">[% h.l('previous') %]</a>
         [%- END %]
 
-        <div id="postcard" lang="[% postcard.lang %]" title="click to turn over">
+        <div id="postcard" lang="[% postcard.lang %]" title="[% h.l('click to flip') %]">
           <div id="front">
             [%- IF postcard.media.type == 'photo' %]
-            <img src="[% postcard.media.url %]" alt="postcard front image" />
+            <img src="[% postcard.media.url %]" alt="[% h.l('postcard front image') %]" />
             [%- END %]
           </div>
 
@@ -59,7 +59,7 @@
               </section>
 
               <section class="right">
-                <img class="stamp" src="/giulia/css/media/stamp-[% postcard.from_country %]-1.png" alt="stamp" />
+                <img class="stamp" src="/giulia/css/media/stamp-[% postcard.from_country %]-1.png" alt="[% h.l('stamp') %]" />
                 <p>[% postcard.recipients %]</p>
                 <p class="bigger">[% postcard.to_country %]</p>
               </section>
@@ -72,7 +72,7 @@
         </div>
 
         [%- IF nav.next %]
-        <a href="/giulia/[% nav.next %]" class="nav next" title="next">next</a>
+        <a href="/giulia/[% nav.next %]" class="nav next" title="[% h.l('next') %]">[% h.l('next') %]</a>
         [%- END %]
       </div>
 

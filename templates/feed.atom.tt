@@ -5,7 +5,7 @@
 
     MACRO date2iso8601(epoch) GET date.format(epoch, '%FT%TZ');
 %]
-  <title>Postcards from Giulia</title>
+  <title xml:lang="[% app.lang || 'en' %]">[% h.l('Postcards from Giulia') %]</title>
   <id>http://sabadelli.it/giulia</id>
   <link rel="self" href="http://sabadelli.it/giulia/feed" />
   <link rel="alternate" href="http://sabadelli.it/giulia" />
@@ -17,7 +17,7 @@
   [%- FOREACH postcard IN postcards %]
   <entry>
     <id>http://sabadelli.it/giulia/[% postcard.permalink %]</id>
-    <title>[% postcard.title %]</title>
+    <title xml:lang="[% postcard.lang %]">[% postcard.title %]</title>
     <link rel="alternate" href="http://sabadelli.it/giulia/[% postcard.permalink %]"/>
     <updated>[% date2iso8601(postcard.pubdate) %]</updated>
     <content type="xhtml" xml:lang="[% postcard.lang %]">
