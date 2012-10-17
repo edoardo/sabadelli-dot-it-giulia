@@ -20,7 +20,7 @@ sub startup {
             # check if a language is forced (via links)
             my $lang_par = $self->param('lang');
 
-            if ($lang_par && $lang_par =~ m{^(af|en|it|no)$}) {
+            if ($lang_par && $lang_par =~ m{^(en|it|no)$}) {
                 $self->session(lang => $lang_par);
             }
 

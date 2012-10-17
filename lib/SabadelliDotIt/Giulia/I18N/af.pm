@@ -8,8 +8,8 @@ use Mojo::Base 'SabadelliDotIt::Giulia::I18N';
 
 our %Lexicon = (
 
-'Postcards from Giulia' => 'Poskaarte uit Giulia',
-'postcards from Giulia' => 'poskaarte uit Giulia',
+'Postcards from Giulia' => 'Poskaarte van Giulia af',
+'postcards from Giulia' => 'poskaarte van Giulia af',
 'previous' => 'vorige',
 'click to flip' => 'kliek om te draai',
 'postcard front image' => 'poskaart voor image',
