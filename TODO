@@ -5,6 +5,5 @@ TODO list:
 - allow for different stamps (store the info in the db)
 - review postmark graphics
 - make custom error pages (ie. 404, 500)
-- add localization for en, it, no
 - add toolbox for the back side (message translation, pic download...)
 - move admin profiles in config
