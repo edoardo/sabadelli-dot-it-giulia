@@ -84,6 +84,11 @@ sub startup {
     $self->plugin('json_config');
     $self->plugin('tt_renderer' => {template_options => {ENCODING => 'utf-8'}});
     $self->plugin('i18n' => {namespace => 'SabadelliDotIt::Giulia::I18N'});
+
+    # defaults
+    $self->defaults(app => {
+        mode => $self->mode
+    });
 }
 
 1;
