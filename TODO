@@ -7,3 +7,4 @@ TODO list:
 - make custom error pages (ie. 404, 500)
 - add toolbox for the back side (message translation, pic download...)
 - move admin profiles in config
+- decide what to do with to_country/from_country (add *_raw with the country code and convert the other to the fullname...)
