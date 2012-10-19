@@ -12,15 +12,18 @@ use Mojo::Base 'Mojolicious';
 my $req_is_authorized = sub {
     my $self = shift;
 
+    # authorization process
+    # ---------------------
+    # PHASE 1: done by nginx, checking both user and password over https
     if (my $authorization = $self->req->headers->authorization) {
         my $username = (split ':' => Mojo::ByteStream->new(substr($authorization, 6))->b64_decode)[0];
 
-        # TODO
-        # verify authorization
-        # nginx sufficient ?!
-        # https and http for api, specific redirects to http for URLs requiring authentication
+        # PHASE 2: done by checking if the user is listed as admin in the app config
+        my $config = $self->app->plugin('json_config');
 
-        if ($username =~ m{edoardo|giulia|margaux}) { # XXX
+        my $admins = $config->{'admins'};
+
+        if ($username ~~ @$admins) {
             return 1;
         }
 
@@ -67,6 +70,9 @@ sub startup {
 
     # for any non-matched method (GET, PUT, DELETE) reply with the help
 #    $giulia_route->route('/postcard')->to('postcard#help');
+
+    # plugins
+    $self->plugin('json_config');
 }
 
 1;
