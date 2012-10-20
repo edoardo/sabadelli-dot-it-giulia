@@ -23,10 +23,12 @@
     <!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
 
     <!-- Open Graph -->
-    <meta property="og:url" content="http://sabadelli.it/giulia/[% postcard.permalink %]" />
+    <meta property="og:type" content="website" />
     <meta property="og:title" content="[% postcard.title %]" />
     <meta property="og:site_name" content="Postcards from Giulia" />
+    <meta property="og:url" content="http://sabadelli.it/giulia/[% postcard.permalink %]" />
     <meta property="og:image" content="[% postcard.media.url %]" />
+    <meta property="og:description" content="Giulia sent a postcard to [% postcard.recipients %]" />
 
     <script type="text/javascript" src="/giulia/js/jquery-min.js"></script>
     <script type="text/javascript" src="/giulia/js/site.js"></script>
@@ -61,7 +63,7 @@
         <div id="postcard" lang="[% postcard.lang %]" title="[% h.l('click to flip') %]">
           <div id="front">
             [%- IF postcard.media.type == 'photo' %]
-            <img src="[% postcard.media.url %]" alt="[% h.l('postcard front image') %]" />
+            <img src="[% postcard.media.url %]" alt="[% h.l('postcard front image') %]" width="800" height="530" />
             [%- END %]
           </div>
 
@@ -74,7 +76,7 @@
               </section>
 
               <section class="right">
-                <img class="stamp" src="/giulia/css/media/stamp-[% postcard.from_country %]-1.png" alt="[% h.l('stamp') %]" />
+                <img class="stamp" src="/giulia/css/media/stamp-[% postcard.from_country %]-1.png" alt="[% h.l('stamp') %]" width="134" height="134" />
                 <p>[% postcard.recipients %]</p>
                 <p class="bigger">[% postcard.to_country %]</p>
               </section>

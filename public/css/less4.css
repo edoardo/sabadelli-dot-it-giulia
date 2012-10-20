@@ -103,7 +103,8 @@ a:hover {
 body > div {
     width: 1096px;
     margin: auto;
-    background: transparent url('/giulia/css/media/postcards-bg.png') no-repeat center 40px;
+    border: 1px solid transparent;
+    background: transparent url('/giulia/css/media/postcards-bg.png') no-repeat center 37px;
 }
 
 header h1 {
@@ -127,7 +128,8 @@ header a:hover {
 
 header + div#container {
     position: relative;
-    height: 574px;
+    height: 572px;
+    margin-bottom: 27px;
 }
 
 a.nav {
@@ -161,7 +163,7 @@ a.nav.next:hover {
     position: absolute;
     left: 128px;
     width: 800px;
-    height: 534px;
+    height: 530px;
     background: #fff;
     padding: 20px;
     border: 1px solid #e9e9e9;
