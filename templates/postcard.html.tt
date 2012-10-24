@@ -18,10 +18,8 @@
 
     <link rel="alternate" type="application/atom+xml" title="[% h.l('Postcards from Giulia') %] Atom feed" href="http://sabadelli.it/giulia/feed" />
 
-    <script type="text/css">
-      @import '/giulia/css/fonts.css';
-      @import '/giulia/css/less4.css';
-    </script>
+    <link rel="stylesheet" type="text/css" media="all" href="/giulia/css/fonts.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="/giulia/css/less4.css" />
 
     <meta name="robots" content="noindex, nofollow" />
 
