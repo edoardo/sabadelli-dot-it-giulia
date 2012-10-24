@@ -10,14 +10,20 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="robots" content="noindex, nofollow" />
+
     <title>[% h.l('Postcards from Giulia') %] - [% postcard.title %]</title>
     <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <link rel="alternate" type="application/atom+xml" title="[% h.l('Postcards from Giulia') %] Atom feed" href="http://sabadelli.it/giulia/feed" />
-    <link rel="stylesheet" type="text/css" media="all" href="/giulia/css/style.css" />
+
+    <script type="text/css">
+      @import '/giulia/css/fonts.css';
+      @import '/giulia/css/less4.css';
+    </script>
+
+    <meta name="robots" content="noindex, nofollow" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
@@ -31,7 +37,15 @@
     <meta property="og:description" content="Giulia sent a postcard to [% postcard.recipients %]" />
 
     <script type="text/javascript" src="/giulia/js/jquery-min.js"></script>
-    <script type="text/javascript" src="/giulia/js/site.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        $('#back').hide();
+        $('#front, #back').on('click', function (e) {
+            $(this).hide();
+            $(this.id === 'front' ? '#back' : '#front').show();
+        });
+      });
+    </script>
 
     [%- IF app.mode == 'production' %]
     <!-- Google Analytics code -->
