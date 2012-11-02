@@ -20,6 +20,9 @@
     <title xml:lang="[% postcard.lang %]">[% postcard.title %]</title>
     <link rel="alternate" href="http://sabadelli.it/giulia/[% postcard.permalink %]"/>
     <updated>[% date2iso8601(postcard.pubdate) %]</updated>
+    <author>
+      <name>Giulia Sabadelli</name>
+    </author>
     <content type="xhtml" xml:lang="[% postcard.lang %]">
       <div xmlns="http://www.w3.org/1999/xhtml">
         <img src="[% postcard.media.url %]" />
