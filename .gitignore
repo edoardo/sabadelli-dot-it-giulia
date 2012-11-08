@@ -1,0 +1,17 @@
+# startup helper scripts
+START
+START_API
+START_SITE
+
+# app configurations
+api.production.json
+api.development.json
+site.development.json
+site.production.json
+
+# database
+db/postcards.sqlite
+
+# utility folders
+log/
+tmp/
