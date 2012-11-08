@@ -13,6 +13,10 @@ my $dao_postcard = 'SabadelliDotIt::Giulia::DAO::Postcard';
 sub index {
     my $self = shift;
 
+    $self->stash->{env} = {
+        static_host => 'https://' . $self->stash->{config}->{static_host},
+    };
+
 #   $self->stash->{content} = {
 #       postcard => $dao_postcard->get_last(),
 #   };
@@ -21,10 +25,19 @@ sub index {
 sub edit_postcard {
     my $self = shift;
 
-    $self->stash->{template} = 'admin/index';
+    $self->stash->{env} = {
+        static_host => 'https://' . $self->stash->{config}->{static_host},
+    };
 
     my $postcard = $dao_postcard->new($self->stash('id'));
     $self->stash->{postcard} = $postcard;
+
+    $self->stash->{js_config} = $self->render(
+        partial => 1,
+        json => $self->stash('config')->{'js_config'},
+    );
+
+    $self->stash->{template} = 'admin/index';
 }
 
 sub sign_flickr_request {

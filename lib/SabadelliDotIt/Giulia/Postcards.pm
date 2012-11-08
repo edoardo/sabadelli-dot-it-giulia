@@ -12,6 +12,9 @@ sub index {
     my $self = shift;
 
     $self->stash->{template} = 'postcard';
+    $self->stash->{env} = {
+        static_host => 'http://' . $self->stash->{config}->{static_host}
+    };
 
     my $last_postcard = $dao_postcard->get_last();
     my $prev_postcard = $last_postcard->get_previous();
@@ -30,6 +33,9 @@ sub read_postcard {
     my $self = shift;
 
     $self->stash->{template} = 'postcard';
+    $self->stash->{env} = {
+        static_host => 'http://' . $self->stash->{config}->{static_host}
+    };
 
     my $postcard = $dao_postcard->search_by_seo($self->stash('seo'));
     my $prev_postcard = $postcard->get_previous();

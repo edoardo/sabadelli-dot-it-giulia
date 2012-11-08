@@ -18,8 +18,8 @@
 
     <link rel="alternate" type="application/atom+xml" title="[% h.l('Postcards from Giulia') %] Atom feed" href="http://sabadelli.it/giulia/feed" />
 
-    <link rel="stylesheet" type="text/css" media="all" href="/giulia/css/fonts.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="/giulia/css/less4.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="[% env.static_host %]/giulia/css/fonts.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="[% env.static_host %]/giulia/css/less4.css" />
 
     <meta name="robots" content="noindex, nofollow" />
 
@@ -34,7 +34,7 @@
     <meta property="og:image" content="[% postcard.media.url %]" />
     <meta property="og:description" content="Giulia sent a postcard to [% postcard.recipients %]" />
 
-    <script type="text/javascript" src="/giulia/js/jquery-min.js"></script>
+    <script type="text/javascript" src="[% env.static_host %]/giulia/js/jquery-min.js"></script>
     <script type="text/javascript">
       $(function () {
         $('#back').hide();
@@ -88,7 +88,7 @@
               </section>
 
               <section class="right">
-                <img class="stamp" src="/giulia/css/media/stamp-[% postcard.from_country %]-1.png" alt="[% h.l('stamp') %]" width="134" height="134" />
+                <img class="stamp" src="[% env.static_host %]/giulia/css/media/stamp-[% postcard.from_country %]-1.png" alt="[% h.l('stamp') %]" width="134" height="134" />
                 <p>[% postcard.recipients %]</p>
                 <p class="bigger">[% postcard.to_country %]</p>
               </section>

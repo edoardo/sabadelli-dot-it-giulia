@@ -16,15 +16,15 @@
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" media="all" href="/giulia/css/style.css" />
+    <link rel="stylesheet" media="all" href="[% env.static_host %]/giulia/css/style.css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
 
-    <script type="text/javascript" src="/giulia/js/underscore-min.js"></script>
-    <script type="text/javascript" src="/giulia/js/zepto.js"></script>
-    <script type="text/javascript" src="/giulia/js/backbone.js"></script>
-    <script type="text/javascript" src="/giulia/js/admin.js"></script>
+    <script type="text/javascript" src="[% env.static_host %]/giulia/js/underscore-min.js"></script>
+    <script type="text/javascript" src="[% env.static_host %]/giulia/js/zepto.js"></script>
+    <script type="text/javascript" src="[% env.static_host %]/giulia/js/backbone.js"></script>
+    <script type="text/javascript" src="[% env.static_host %]/giulia/js/admin.js"></script>
   </head>
   
   <body lang="en">
