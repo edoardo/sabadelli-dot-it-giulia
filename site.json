@@ -1,6 +1,10 @@
 {
     "secret": null,
 
+    "admins": [],
+
+    "static_host": null,
+
     "flickr": {
         "key": null,
         "secret": null,
