@@ -15,7 +15,7 @@ $('#mediaUploadButton').on('click', function (e) {
         hidden: 2
     };
 
-    $.post('admin/sign_flickr_request', data, function (resp) {
+    $.post('/giulia/admin/sign_flickr_request', data, function (resp) {
         data.photo = file;
         data.api_key = resp.api_key;
         data.auth_token = resp.auth_token;
@@ -47,7 +47,7 @@ $('#mediaUploadButton').on('click', function (e) {
                 };
 
                 // sign the request for sizes
-                $.post('admin/sign_flickr_request', data, function (resp) {
+                $.post('/giulia/admin/sign_flickr_request', data, function (resp) {
                     data.api_key = resp.api_key;
                     data.auth_token = resp.auth_token;
                     data.api_sig = resp.api_sig;
