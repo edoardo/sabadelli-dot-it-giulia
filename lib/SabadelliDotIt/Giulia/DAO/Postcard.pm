@@ -7,9 +7,11 @@ use DateTime ();
 use Mojo::JSON ();
 use Text::Markdown ();
 
-use base 'SabadelliDotIt::Giulia::DAO::Base';
+use base 'SabadelliDotIt::DAO::Base';
 
-my $dao_base = 'SabadelliDotIt::Giulia::DAO::Base';
+my $dao_base = 'SabadelliDotIt::DAO::Base';
+$dao_base->dbname('db/postcards.sqlite');
+
 
 sub source {
     return 'postcards';
@@ -18,6 +20,7 @@ sub source {
 sub accessors {
     return qw(
         from_country
+        to_country
         recipients
         title seo
         content content_raw
@@ -96,27 +99,6 @@ sub permalink {
         $pubdate->ymd('/'),
         $self->{data}->{seo},
     );
-}
-
-sub to_country {
-    my $self = shift;
-
-    my %code2name = (
-        it => 'Italia',
-        no => 'Norge',
-        za => 'South Africa',
-        www => 'Around the world',
-    );
-
-    if (! $self->{data}->{to_country}) {
-        $self->fetch();
-    }
-
-    if (my $country_code = $self->{data}->{to_country}) {
-        return uc $code2name{$country_code};
-    }
-
-    return;
 }
 
 sub update {

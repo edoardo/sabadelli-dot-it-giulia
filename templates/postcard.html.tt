@@ -4,6 +4,13 @@
     MACRO date2iso8601(epoch) GET date.format(epoch, '%F');
     MACRO date2path(epoch) GET date.format(epoch, '%Y/%m/%d');
     MACRO date2stamp(epoch) GET date.format(epoch, '%Y.%m.%d');
+
+    countries = {
+        'it' => 'Italy',
+        'no' => 'Norway',
+        'za' => 'South Africa',
+        'www' => 'Around the world',
+    };
 -%]
 <!DOCTYPE html>
 <html>
@@ -90,7 +97,7 @@
               <section class="right">
                 <img class="stamp" src="[% env.static_host %]/giulia/css/media/stamp-[% postcard.from_country %]-1.png" alt="[% h.l('stamp') %]" width="134" height="134" />
                 <p>[% postcard.recipients %]</p>
-                <p class="bigger">[% postcard.to_country %]</p>
+                <p class="bigger">[% countries.${postcard.to_country} %]</p>
               </section>
 
               <footer>
