@@ -1,6 +1,5 @@
 TODO list:
 
-- pass variables to admin.js, for switching between api and api-beta
 - make it work for smaller screens and mobile
 - allow for different stamps (store the info in the db)
 - review postmark graphics
