@@ -107,6 +107,12 @@ body > div {
     background: transparent url('/giulia/css/media/postcards-bg.png') no-repeat center 37px;
 }
 
+body > form {
+    width: 1096px;
+    margin: auto;
+    border: 1px solid transparent;
+}
+
 header h1 {
     padding-left: 120px;
     font-family: SpicyRiceRegular, Verdana, sans-serif;

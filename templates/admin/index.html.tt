@@ -11,12 +11,13 @@
 
   <head>
     <meta charset="utf-8"/>
-    <title>Giulia Sabadelli - Admin</title>
+    <title>Postcards from Giulia - Admin interface</title>
     <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" media="all" href="[% env.static_host %]/giulia/css/style.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="[% env.static_host %]/giulia/css/fonts.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="[% env.static_host %]/giulia/css/less4.css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
@@ -28,7 +29,11 @@
   </head>
   
   <body lang="en">
-    <form action="https://api-beta.sabadelli.it/giulia/postcard" method="POST">
+    <header>
+      <a href="/giulia/admin"><h1>postcards from Giulia</h1></a>
+    </header>
+
+    <form action="[% env.api_host %]/giulia/postcard" method="POST">
       <fieldset>
         <legend>Front</legend>
         Title:

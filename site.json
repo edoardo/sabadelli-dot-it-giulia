@@ -3,6 +3,8 @@
 
     "admins": [],
 
+    "api_host": null,
+
     "static_host": null,
 
     "flickr": {
