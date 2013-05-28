@@ -14,8 +14,14 @@ sub index {
     my $self = shift;
 
     $self->stash->{env} = {
+        api_host => 'https://' . $self->stash->{config}->{api_host},
         static_host => 'https://' . $self->stash->{config}->{static_host},
     };
+
+    $self->stash->{js_config} = $self->render(
+        partial => 1,
+        json => $self->stash('config')->{'js_config'},
+    );
 
 #   $self->stash->{content} = {
 #       postcard => $dao_postcard->get_last(),
