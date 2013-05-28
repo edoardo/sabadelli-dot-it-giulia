@@ -1,6 +1,6 @@
 $(function () {
 
-var apiRoot = 'https://api-beta.sabadelli.it/giulia';
+var apiRoot = config.api_root;
 
 $('#mediaUploadButton').on('click', function (e) {
     var file = $('input[name="photo"]').get(0).files[0];
@@ -96,7 +96,7 @@ $('#postcardCreateButton').on('click', function (e) {
 
     $.post(apiRoot + '/postcard', postcard, function (resp) {
         console.log('postcard create success', resp);
-        alert('postcard successfully created!');
+        alert('postcard ' + resp.postcard.id + ' successfully created!');
     });
 });
 

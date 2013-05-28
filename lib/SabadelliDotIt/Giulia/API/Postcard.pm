@@ -33,7 +33,7 @@ sub create {
     if ($postcard && $postcard->content) {
 # XXX        $self->add_to_feed($postcard);
 
-        $self->render(json => {message => 'success'});
+        $self->render(json => {message => 'success', postcard => $postcard->{data}});
     }
     else {
         $self->render(

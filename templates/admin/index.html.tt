@@ -22,6 +22,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
 
+    [% IF js_config %]
+    <script type="text/javascript">
+      var config = [% js_config %];
+    </script>
+    [% END %]
     <script type="text/javascript" src="[% env.static_host %]/giulia/js/underscore-min.js"></script>
     <script type="text/javascript" src="[% env.static_host %]/giulia/js/zepto.js"></script>
     <script type="text/javascript" src="[% env.static_host %]/giulia/js/backbone.js"></script>
