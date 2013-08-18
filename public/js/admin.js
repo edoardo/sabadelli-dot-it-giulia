@@ -94,9 +94,17 @@ $('#postcardCreateButton').on('click', function (e) {
 
     postcard['is_draft'] = $('input[name="is_draft"]').prop('checked') ? 1 : 0;
 
-    $.post(apiRoot + '/postcard', postcard, function (resp) {
-        console.log('postcard create success', resp);
-        alert('postcard ' + resp.postcard.id + ' successfully created!');
+    $.ajax({
+        type: 'POST',
+        url: apiRoot + '/postcard',
+        xhrFields: {
+            withCredentials: true
+        },
+        data: postcard,
+        success: function (resp) {
+            console.log('postcard create success', resp);
+            alert('postcard ' + resp.postcard.id + ' successfully created!');
+        }
     });
 });
 
@@ -112,6 +120,9 @@ $('#postcardEditButton').on('click', function (e) {
     $.ajax({
         type: 'PUT',
         url: apiRoot + '/postcard/' + $('input[name="id"]').val(),
+        xhrFields: {
+            withCredentials: true
+        },
         data: postcard,
         success: function (resp) {
             console.log('postcard edit success', resp);
@@ -124,6 +135,9 @@ $('#postcardDeleteButton').on('click', function (e) {
     $.ajax({
         type: 'DELETE',
         url: apiRoot + '/postcard/' + $('input[name="id"]').val(),
+        xhrFields: {
+            withCredentials: true
+        },
         success: function (resp) {
             console.log('postcard delete success', resp);
             alert('postcard successfully DELETED!');

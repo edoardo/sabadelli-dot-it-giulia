@@ -28,7 +28,7 @@
     </script>
     [% END %]
     <script type="text/javascript" src="[% env.static_host %]/giulia/js/underscore-min.js"></script>
-    <script type="text/javascript" src="[% env.static_host %]/giulia/js/zepto.js"></script>
+    <script type="text/javascript" src="[% env.static_host %]/giulia/js/jquery-min.js"></script>
     <script type="text/javascript" src="[% env.static_host %]/giulia/js/backbone.js"></script>
     <script type="text/javascript" src="[% env.static_host %]/giulia/js/admin.js"></script>
   </head>
