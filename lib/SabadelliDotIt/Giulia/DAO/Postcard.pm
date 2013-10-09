@@ -182,7 +182,7 @@ sub search_by_date_seo {
     my $records = $dao_base->search(
         {
             class => $type,
-            sql => q{SELECT id FROM postcards WHERE pubdate BETWEEN strftime('%s', '?-?-?') AND strftime('%s', '?-?-?', +1 day', '-1 second') AND seo = ?},
+            sql => q{SELECT id FROM postcards WHERE pubdate BETWEEN strftime('%s', '?-?-?') AND strftime('%s', '?-?-?', '+1 day', '-1 second') AND seo = ?},
             binds => [$year, $month, $day, $year, $month, $day, $seo],
         }
     );
