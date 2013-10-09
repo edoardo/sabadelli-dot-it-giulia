@@ -175,15 +175,15 @@ sub search_by_day {
     );
 }
 
-# single postcard by SEO title
-sub search_by_seo {
-    my ($type, $seo) = @_;
+# single postcard by date and SEO title
+sub search_by_date_seo {
+    my ($type, $year, $month, $day, $seo) = @_;
 
     my $records = $dao_base->search(
         {
             class => $type,
-            sql => 'SELECT id FROM postcards WHERE seo = ?',
-            binds => [$seo],
+            sql => q{SELECT id FROM postcards WHERE pubdate BETWEEN strftime('%s', '?-?-?') AND strftime('%s', '?-?-?', +1 day', '-1 second') AND seo = ?},
+            binds => [$year, $month, $day, $year, $month, $day, $seo],
         }
     );
 

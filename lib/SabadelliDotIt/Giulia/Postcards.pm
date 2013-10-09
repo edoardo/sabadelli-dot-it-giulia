@@ -37,7 +37,7 @@ sub read_postcard {
         static_host => 'http://' . $self->stash->{config}->{static_host}
     };
 
-    my $postcard = $dao_postcard->search_by_seo($self->stash('seo'));
+    my $postcard = $dao_postcard->search_by_date_seo($self->stash('year'), $self->stash('month'), $self->stash('day'), $self->stash('seo'));
     my $prev_postcard = $postcard->get_previous();
     my $next_postcard = $postcard->get_next();
 
