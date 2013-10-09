@@ -140,11 +140,13 @@ sub get_last {
 sub search_by_year {
     my ($type, $year) = @_;
 
+    my $date = "$year-01-01";
+
     return $dao_base->search(
         {
             class =>$type,
-            sql => q{SELECT id FROM postcards WHERE pubdate BETWEEN strftime('%s','?-01-01') AND strftime('%s','?-01-01','+1 year','-1 second') ORDER BY pubdate DESC},
-            binds => [$year, $year],
+            sql => q{SELECT id FROM postcards WHERE pubdate BETWEEN strftime('%s', ?) AND strftime('%s', ?, '+1 year', '-1 second') ORDER BY pubdate DESC},
+            binds => [$date, $date],
         }
     );
 }
@@ -153,11 +155,13 @@ sub search_by_year {
 sub search_by_month {
     my ($type, $year, $month) = @_;
 
+    my $date = "$year-$month-01";
+
     return $dao_base->search(
         {
             class =>$type,
-            sql => q{SELECT id FROM postcards WHERE pubdate BETWEEN strftime('%s','?-?-01') AND strftime('%s','?-?-01','+1 month','-1 second') ORDER BY pubdate DESC},
-            binds => [$year, $month, $year, $month],
+            sql => q{SELECT id FROM postcards WHERE pubdate BETWEEN strftime('%s', ?) AND strftime('%s', ?, '+1 month', '-1 second') ORDER BY pubdate DESC},
+            binds => [$date, $date],
         }
     );
 }
@@ -166,11 +170,13 @@ sub search_by_month {
 sub search_by_day {
     my ($type, $year, $month, $day) = @_;
 
+    my $date = "$year-$month-$day";
+
     return $dao_base->search(
         {
             class =>$type,
-            sql => q{SELECT id FROM postcards WHERE pubdate BETWEEN strftime('%s', '?-?-?') AND strftime('%s', '?-?-?', '+1 day', '-1 second') ORDER BY pubdate DESC},
-            binds => [$year, $month, $day, $year, $month, $day],
+            sql => q{SELECT id FROM postcards WHERE pubdate BETWEEN strftime('%s', ?) AND strftime('%s', ?, '+1 day', '-1 second') ORDER BY pubdate DESC},
+            binds => [$date, $date],
         }
     );
 }
@@ -179,11 +185,13 @@ sub search_by_day {
 sub search_by_date_seo {
     my ($type, $year, $month, $day, $seo) = @_;
 
+    my $date = "$year-$month-$day";
+
     my $records = $dao_base->search(
         {
             class => $type,
-            sql => q{SELECT id FROM postcards WHERE pubdate BETWEEN strftime('%s', '?-?-?') AND strftime('%s', '?-?-?', '+1 day', '-1 second') AND seo = ?},
-            binds => [$year, $month, $day, $year, $month, $day, $seo],
+            sql => q{SELECT id FROM postcards WHERE pubdate BETWEEN strftime('%s', ?) AND strftime('%s', ?, '+1 day', '-1 second') AND seo = ?},
+            binds => [$date, $date, $seo],
         }
     );
 
