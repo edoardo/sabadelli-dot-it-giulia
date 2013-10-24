@@ -1,1 +1,1 @@
-zepto-min.v1.0rc1.js
+zepto-min.v1.0.js
