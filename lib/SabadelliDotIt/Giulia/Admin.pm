@@ -1,6 +1,7 @@
 package SabadelliDotIt::Giulia::Admin;
 
-use Mojo::Util ();
+use Net::OAuth ();
+use Net::OAuth::ProtectedResourceRequest ();
 
 use Mojo::Base 'Mojolicious::Controller';
 
@@ -50,22 +51,40 @@ sub sign_flickr_request {
     my $self = shift;
 
     my $config = $self->stash('config');
-    my $secret = $config->{flickr}->{secret};
 
     my $params = $self->req->params->to_hash();
 
-    $params->{auth_token} = $config->{flickr}->{auth_token};
-    $params->{api_key} = $config->{flickr}->{key};
+    # these need to be passed from the JavaScript, as we need to sign
+    # 2 types of requests, upload and REST API
+    my $request_url = delete($params->{request_url});
+    my $request_method = delete($params->{request_method});
 
-    my $string = $secret . join('', map {$_ => $params->{$_}} sort {$a cmp $b} keys %$params);
+    my $request = Net::OAuth::ProtectedResourceRequest->new(
+        # OAuth stuff
+        consumer_key => $config->{flickr}->{key},
+        consumer_secret => $config->{flickr}->{secret},
+        token => $config->{flickr}->{access_token},
+        token_secret => $config->{flickr}->{access_secret},
+        timestamp => time,
+        nonce => int(rand(2 ** 32)),
+        signature_method => 'HMAC-SHA1',
+        protocol_version => Net::OAuth::PROTOCOL_VERSION_1_0,
+        request_method => $request_method,
+        request_url => URI->new($request_url),
+        extra_params => $params,
+    );
 
-    # XXX return all parameters with the missing ones (ie. api_key) and the signature
-    # JSON response, used by JavaScript to make the actual API call
+    $request->sign();
+
+    my $oauth_params = $request->to_hash;
+
+    # Return OAuth parameters and original query parameters, plus the
+    # OAuth signature.
+    # All are used by JavaScript to make the actual API call
     # so signing is done server side, while API calls client side
     $self->render('json', {
-        api_key => $config->{flickr}->{key},
-        auth_token => $params->{auth_token},
-        api_sig => Mojo::Util::md5_sum($string)
+        %$oauth_params,
+        %$params,
     });
 }
 
