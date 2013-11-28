@@ -10,6 +10,7 @@
     "flickr": {
         "key": null,
         "secret": null,
-        "auth_token": null
+        "access_token": null,
+        "access_secret": null
     }
 }
