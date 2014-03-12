@@ -6,7 +6,7 @@ $('#mediaUploadButton').on('click', function (e) {
     var file = $('input[name="photo"]').get(0).files[0];
 
     var data = {
-        request_url: 'http://api.flickr.com/services/upload',
+        request_url: 'https://up.flickr.com/services/upload',
         request_method: 'POST',
 
         title: $('input[name="title"]').val(),
@@ -29,7 +29,7 @@ $('#mediaUploadButton').on('click', function (e) {
 
         var xhr = new XMLHttpRequest();
 
-        xhr.open('POST', 'http://api.flickr.com/services/upload', true);
+        xhr.open('POST', data.request_url, true);
         xhr.onload = function () {
             var rsp = xhr.responseXML.getElementsByTagName('rsp')[0],
                 stat = rsp.getAttribute('stat');
@@ -40,7 +40,7 @@ $('#mediaUploadButton').on('click', function (e) {
                 console.log('Flickr upload successfull! [' + photoid + ']');
 
                 var data = {
-                    request_url: 'http://api.flickr.com/services/rest',
+                    request_url: 'https://api.flickr.com/services/rest',
                     request_method: 'GET',
 
                     method: 'flickr.photos.getSizes',
@@ -53,7 +53,7 @@ $('#mediaUploadButton').on('click', function (e) {
                 $.post('/giulia/admin/sign_flickr_request', data, function (resp) {
                     var queryString = $.param(resp);
 
-                    $.get('http://api.flickr.com/services/rest?' + queryString, function (resp) {
+                    $.get(data.request_url + '?' + queryString, function (resp) {
                         if (resp.stat === 'ok') {
                             resp.sizes.size.forEach(function (size) {
                                 if (size.label === 'Medium 800') {
