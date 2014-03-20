@@ -263,7 +263,7 @@
 
     <title>[% h.l('Postcards from Giulia') %] - [% postcard.title %]</title>
     <!--[if lt IE 9]>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <link rel="dns-prefetch" href="[% env.www_host %]" />
@@ -275,8 +275,7 @@
 
     <link rel="alternate" type="application/atom+xml" title="[% h.l('Postcards from Giulia') %] Atom feed" href="[% env.www_host %]/giulia/feed" />
 
-    <link rel="stylesheet" type="text/css" media="all" href="[% env.static_host %]/giulia/css/fonts.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="[% env.static_host %]/giulia/css/less4.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="[% env.static_host %]/giulia/css/style.css" />
 
     <meta name="robots" content="noindex, nofollow" />
 
