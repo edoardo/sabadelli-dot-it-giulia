@@ -185,6 +185,10 @@ a.nav.next:hover {
     cursor: pointer;
 }
 
+#back {
+    display: none;
+}
+
 #back h1 {
     font-style: italic;
     font-size: 16px;

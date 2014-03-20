@@ -290,17 +290,6 @@
     <meta property="og:image" content="[% postcard.media.url %]" />
     <meta property="og:description" content="Giulia sent a postcard to [% postcard.recipients %]" />
 
-    <script type="text/javascript" src="[% env.static_host %]/giulia/js/jquery-min.js"></script>
-    <script type="text/javascript">
-      $(function () {
-        $('#back').hide();
-        $('#front, #back').on('click', function (e) {
-            $(this).hide();
-            $(this.id === 'front' ? '#back' : '#front').show();
-        });
-      });
-    </script>
-
     [%- IF app.mode == 'production' %]
     <!-- Google Analytics code -->
     <script type="text/javascript">
@@ -365,6 +354,17 @@
       </div>
 
     </div>
+
+    <script type="text/javascript" src="[% env.static_host %]/giulia/js/jquery-min.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        $('#front, #back').on('click', function (e) {
+            $(this).hide();
+            $(this.id === 'front' ? '#back' : '#front').show();
+        });
+      });
+    </script>
+
   </body>
   
 </html>
