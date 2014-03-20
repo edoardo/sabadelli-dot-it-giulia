@@ -266,7 +266,14 @@
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link rel="alternate" type="application/atom+xml" title="[% h.l('Postcards from Giulia') %] Atom feed" href="http://sabadelli.it/giulia/feed" />
+    <link rel="dns-prefetch" href="[% env.www_host %]" />
+    <link rel="dns-prefetch" href="[% env.static_host %]" />
+    <!--[if IE 9]>
+    <link rel="prefetch" href="[% env.www_host %]" />
+    <link rel="prefetch" href="[% env.static_host %]" />
+    <![endif]-->
+
+    <link rel="alternate" type="application/atom+xml" title="[% h.l('Postcards from Giulia') %] Atom feed" href="[% env.www_host %]/giulia/feed" />
 
     <link rel="stylesheet" type="text/css" media="all" href="[% env.static_host %]/giulia/css/fonts.css" />
     <link rel="stylesheet" type="text/css" media="all" href="[% env.static_host %]/giulia/css/less4.css" />
@@ -274,13 +281,12 @@
     <meta name="robots" content="noindex, nofollow" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="[% postcard.title %]" />
     <meta property="og:site_name" content="Postcards from Giulia" />
-    <meta property="og:url" content="http://sabadelli.it/giulia/[% postcard.permalink %]" />
+    <meta property="og:url" content="http://www.sabadelli.it/giulia/[% postcard.permalink %]" />
     <meta property="og:image" content="[% postcard.media.url %]" />
     <meta property="og:description" content="Giulia sent a postcard to [% postcard.recipients %]" />
 
@@ -299,8 +305,11 @@
     <!-- Google Analytics code -->
     <script type="text/javascript">
       var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-323903-10']);
-      _gaq.push(['_trackPageview']);
+      _gaq.push(
+        ['_setAccount', 'UA-323903-10'],
+        ['_setDomainName', 'www.sabadelli.it'],
+        ['_trackPageview']
+      );
 
       (function() {
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -344,7 +353,7 @@
               </section>
 
               <footer>
-                <small>&copy; copyright <a href="http://sabadelli.it/edoardo">Edoardo Sabadelli</a></small>
+                <small>&copy; copyright <a href="http://www.sabadelli.it/edoardo">Edoardo Sabadelli</a></small>
               </footer>
             </article>
           </div>

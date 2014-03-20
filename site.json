@@ -4,8 +4,8 @@
     "admins": [],
 
     "api_host": null,
-
     "static_host": null,
+    "www_host": null,
 
     "flickr": {
         "key": null,
