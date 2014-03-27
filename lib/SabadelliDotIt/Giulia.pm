@@ -81,7 +81,7 @@ sub startup {
 
     # plugins
     $self->plugin('charset' => {charset => 'utf-8'});
-    my $config = $self->plugin('JSONConfig');
+    my $config = $self->plugin('JSONConfig' => {file => 'site.json'});
     $self->plugin('tt_renderer' => {template_options => {ENCODING => 'utf-8'}});
     $self->plugin('I18N' => {namespace => 'SabadelliDotIt::Giulia::I18N'});
 

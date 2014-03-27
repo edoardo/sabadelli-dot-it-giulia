@@ -19,7 +19,7 @@ my $req_is_authorized = sub {
         my $username = (split ':' => Mojo::ByteStream->new(substr($authorization, 6))->b64_decode)[0];
 
         # PHASE 2: done by checking if the user is listed as admin in the app config
-        my $config = $self->app->plugin('JSONConfig');
+        my $config = $self->app->plugin('JSONConfig' => {file => 'api.json'});
 
         my $admins = $config->{'admins'};
 
@@ -72,7 +72,7 @@ sub startup {
 #    $giulia_route->route('/postcard')->to('postcard#help');
 
     # plugins
-    $self->plugin('JSONConfig');
+    $self->plugin('JSONConfig' => {file => 'api.json'});
 }
 
 1;
