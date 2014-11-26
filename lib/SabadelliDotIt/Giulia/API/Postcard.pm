@@ -71,7 +71,9 @@ sub read {
             $self->render(data => "$callback($data);", format => 'js');
         }
         else {
-            $self->render(json => $postcard->{data});
+            my $json = $postcard->{data};
+            $json->{media} = $postcard->media;
+            $self->render(json => $json);
         }
     }
     else {
