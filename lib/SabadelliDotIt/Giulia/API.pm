@@ -23,7 +23,7 @@ my $req_is_authorized = sub {
 
         my $admins = $config->{'admins'};
 
-        if ($username ~~ @$admins) {
+        if (grep { $username } @$admins) {
             return 1;
         }
 
