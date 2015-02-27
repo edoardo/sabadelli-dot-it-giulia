@@ -15,3 +15,6 @@ db/postcards.sqlite
 # utility folders
 log/
 tmp/
+
+# grunt Node modules
+grunt/node_modules/
