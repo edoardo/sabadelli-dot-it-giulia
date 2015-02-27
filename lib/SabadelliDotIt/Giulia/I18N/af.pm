@@ -15,6 +15,8 @@ our %Lexicon = (
 'postcard front image' => 'poskaart voor image',
 'stamp' => 'stempel',
 'next' => 'volgende',
+'Archives' => 'Argiewe',
+'Sent to [_1] on [_2]' => '[_1] gestuur op [_2]',
 
 );
 

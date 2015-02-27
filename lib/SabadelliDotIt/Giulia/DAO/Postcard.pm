@@ -136,7 +136,7 @@ sub get_last {
     return;
 }
 
-# all postcards by yera
+# all postcards by year
 sub search_by_year {
     my ($type, $year) = @_;
 
@@ -144,8 +144,8 @@ sub search_by_year {
 
     return $dao_base->search(
         {
-            class =>$type,
-            sql => q{SELECT id FROM postcards WHERE pubdate BETWEEN strftime('%s', ?) AND strftime('%s', ?, '+1 year', '-1 second') ORDER BY pubdate DESC},
+            class => $type,
+            sql => q{SELECT id FROM postcards WHERE pubdate BETWEEN strftime('%s', ?) AND strftime('%s', ?, '+1 year', '-1 second') ORDER BY pubdate ASC},
             binds => [$date, $date],
         }
     );
@@ -159,8 +159,8 @@ sub search_by_month {
 
     return $dao_base->search(
         {
-            class =>$type,
-            sql => q{SELECT id FROM postcards WHERE pubdate BETWEEN strftime('%s', ?) AND strftime('%s', ?, '+1 month', '-1 second') ORDER BY pubdate DESC},
+            class => $type,
+            sql => q{SELECT id FROM postcards WHERE pubdate BETWEEN strftime('%s', ?) AND strftime('%s', ?, '+1 month', '-1 second') ORDER BY pubdate ASC},
             binds => [$date, $date],
         }
     );
@@ -174,8 +174,8 @@ sub search_by_day {
 
     return $dao_base->search(
         {
-            class =>$type,
-            sql => q{SELECT id FROM postcards WHERE pubdate BETWEEN strftime('%s', ?) AND strftime('%s', ?, '+1 day', '-1 second') ORDER BY pubdate DESC},
+            class => $type,
+            sql => q{SELECT id FROM postcards WHERE pubdate BETWEEN strftime('%s', ?) AND strftime('%s', ?, '+1 day', '-1 second') ORDER BY pubdate ASC},
             binds => [$date, $date],
         }
     );

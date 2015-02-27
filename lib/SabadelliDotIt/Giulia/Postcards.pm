@@ -53,9 +53,8 @@ sub read_postcard {
 sub search_by_year {
     my $self = shift;
 
-    $self->stash->{content} = {
-        postcards => $dao_postcard->search_by_year($self->stash('year')),
-    };
+    $self->stash->{template} = 'search';
+    $self->stash->{postcards} = $dao_postcard->search_by_year($self->stash('year'));
 }
 
 # postcards of the given month
@@ -63,18 +62,8 @@ sub search_by_year {
 sub search_by_month {
     my $self = shift;
 
-    $self->stash->{content} = {
-        postcards => $dao_postcard->search_by_month($self->stash('year'), $self->stash('month')),
-    };
-}
-
-# /giulia/2012/07/17
-sub search_by_day {
-    my $self = shift;
-
-    $self->stash->{content} = {
-        postcards => $dao_postcard->search_by_day($self->stash('year'), $self->stash('month'), $self->stash('day')),
-    };
+    $self->stash->{template} = 'search';
+    $self->stash->{postcards} = $dao_postcard->search_by_month($self->stash('year'), $self->stash('month'));
 }
 
 # Atom feed
