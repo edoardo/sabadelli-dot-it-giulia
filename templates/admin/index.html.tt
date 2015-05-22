@@ -339,7 +339,7 @@
             ]
           %]
           [% FOREACH lang IN languages %]
-          <option value="[% lang.id %]"[% IF lang.id == postcard.lang %] selected[% END %]>[% lang.name %]</option>
+          <option value="[% lang.id %]"[% IF lang.id == (postcard.lang or 'en') %] selected[% END %]>[% lang.name %]</option>
           [% END %]
         </select>
       </fieldset>
