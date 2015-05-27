@@ -288,24 +288,6 @@
     <meta property="og:url" content="http://www.sabadelli.it/giulia/[% postcard.permalink %]" />
     <meta property="og:image" content="[% postcard.media.url %]" />
     <meta property="og:description" content="Giulia sent a postcard to [% postcard.recipients %]" />
-
-    [%- IF app.mode == 'production' %]
-    <!-- Google Analytics code -->
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(
-        ['_setAccount', 'UA-323903-10'],
-        ['_setDomainName', 'www.sabadelli.it'],
-        ['_trackPageview']
-      );
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-    [% END -%]
   </head>
   
   <body lang="[% app.lang || 'en' %]">
