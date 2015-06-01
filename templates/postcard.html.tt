@@ -262,15 +262,14 @@
     <meta charset="utf-8" />
 
     <title>[% h.l('Postcards from Giulia') %] - [% postcard.title %]</title>
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
 
-    <link rel="dns-prefetch" href="[% env.www_host %]" />
     <link rel="dns-prefetch" href="[% env.static_host %]" />
     <!--[if IE 9]>
-    <link rel="prefetch" href="[% env.www_host %]" />
     <link rel="prefetch" href="[% env.static_host %]" />
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+    <script src="[% env.static_host %]/giulia/js/html5shiv.min.js"></script>
     <![endif]-->
 
     <link rel="alternate" type="application/atom+xml" title="[% h.l('Postcards from Giulia') %] Atom feed" href="[% env.www_host %]/giulia/feed" />
