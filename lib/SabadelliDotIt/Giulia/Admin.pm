@@ -14,11 +14,6 @@ my $dao_postcard = 'SabadelliDotIt::Giulia::DAO::Postcard';
 sub index {
     my $self = shift;
 
-    $self->stash->{env} = {
-        api_host => 'https://' . $self->stash->{config}->{api_host},
-        static_host => 'https://' . $self->stash->{config}->{static_host},
-    };
-
     $self->stash->{js_config} = $self->render(
         partial => 1,
         json => $self->stash('config')->{'js_config'},
@@ -31,10 +26,6 @@ sub index {
 
 sub edit_postcard {
     my $self = shift;
-
-    $self->stash->{env} = {
-        static_host => 'https://' . $self->stash->{config}->{static_host},
-    };
 
     my $postcard = $dao_postcard->new($self->stash('id'));
     $self->stash->{postcard} = $postcard;
@@ -84,7 +75,8 @@ sub sign_flickr_request {
     # so signing is done server side, while API calls client side
     $self->render('json', {
         %$oauth_params,
-        %$params,
+# XXX these should be already included above
+#        %$params,
     });
 }
 

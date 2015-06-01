@@ -22,7 +22,7 @@
     <script src="[% env.static_host %]/giulia/js/html5shiv.min.js"></script>
     <![endif]-->
 
-    <link rel="alternate" type="application/atom+xml" title="[% h.l('Postcards from Giulia') %] Atom feed" href="[% env.www_host %]/giulia/feed" />
+    <link rel="alternate" type="application/atom+xml" title="[% h.l('Postcards from Giulia') %] Atom feed" href="/giulia/feed" />
 
     <link rel="stylesheet" type="text/css" media="all" href="[% env.static_host %]/giulia/css/style.css" />
 

@@ -1,6 +1,6 @@
 package SabadelliDotIt::Giulia;
 
-# - http://sabadelli.it/giulia
+# - http://www.sabadelli.it/giulia
 
 use Mojo::Base 'Mojolicious';
 
@@ -89,9 +89,16 @@ sub startup {
     $self->secrets([$config->{secret}]);
 
     # defaults
-    $self->defaults(app => {
-        mode => $self->mode
-    });
+    $self->defaults(
+        app => {
+            mode => $self->mode
+        },
+        env => {
+            api_host => '//' . $config->{api_host},
+            static_host => '//' . $config->{static_host},
+            www_host => '//' . $config->{www_host},
+        },
+    );
 }
 
 1;
