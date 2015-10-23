@@ -14,8 +14,7 @@ my $dao_postcard = 'SabadelliDotIt::Giulia::DAO::Postcard';
 sub index {
     my $self = shift;
 
-    $self->stash->{js_config} = $self->render(
-        partial => 1,
+    $self->stash->{js_config} = $self->render_to_string(
         json => $self->stash('config')->{'js_config'},
     );
 
@@ -30,8 +29,7 @@ sub edit_postcard {
     my $postcard = $dao_postcard->new($self->stash('id'));
     $self->stash->{postcard} = $postcard;
 
-    $self->stash->{js_config} = $self->render(
-        partial => 1,
+    $self->stash->{js_config} = $self->render_to_string(
         json => $self->stash('config')->{'js_config'},
     );
 

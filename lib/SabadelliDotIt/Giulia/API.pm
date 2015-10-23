@@ -50,7 +50,7 @@ sub startup {
     my $r = $self->routes;
 
     # /giulia
-#   my $giulia_route = $r->bridge('/giulia')
+#   my $giulia_route = $r->under('/giulia')
 #           ->via('GET')
 #           ->to('postcard#help');
 
@@ -60,7 +60,7 @@ sub startup {
         ->to('postcard#read');
 
     # POST PUT DELETE need authentication
-    my $postcard_route_auth = $r->bridge('/giulia/postcard')
+    my $postcard_route_auth = $r->under('/giulia/postcard')
                                      ->via(qw(POST PUT DELETE))
                                      ->to(cb => $req_is_authorized);
 

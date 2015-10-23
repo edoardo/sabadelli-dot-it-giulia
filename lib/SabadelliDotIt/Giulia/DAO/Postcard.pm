@@ -67,7 +67,7 @@ sub media {
     }
 
     if ($self->{data}->{media}) {
-        return Mojo::JSON->new->decode($self->{data}->{media});
+        return Mojo::JSON::decode_json($self->{data}->{media});
     }
 
     return;
